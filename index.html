@@ -3,41 +3,93 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ESTIA E-Learning - Accès aux Cours</title>
+    <title>ESTIA E-Learning - Ma Plateforme</title>
     <link rel="stylesheet" href="desktop.css">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-</head>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"> </head>
 <body>
 
     <header>
         <div class="container">
-            <h1>ESTIA E-Learning</h1>
+            <div class="logo">
+                <i class="fas fa-graduation-cap"></i>
+                <h1>ESTIA | E-Plateforme</h1>
+            </div>
             <nav>
                 <ul>
-                    <li><a href="#accueil">Accueil</a></li>
-                    <li><a href="#cours">Cours</a></li>
-                    <li><a href="#premium">Abonnement Premium</a></li>
-                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="#tableau-de-bord"><i class="fas fa-home"></i> Tableau de Bord</a></li>
+                    <li><a href="#catalogue"><i class="fas fa-book"></i> Catalogue</a></li>
+                    <li><a href="#premium"><i class="fas fa-crown"></i> Premium</a></li>
+                    <li><a href="#aide"><i class="fas fa-question-circle"></i> Aide</a></li>
                 </ul>
             </nav>
+            <div class="user-action">
+                <a href="#connexion" class="btn primary"><i class="fas fa-sign-in-alt"></i> Connexion</a>
+            </div>
         </div>
     </header>
 
     <main class="container">
         
-        <section id="hero" class="hero">
-            <h2>Votre Plateforme d'Apprentissage ESTIA</h2>
-            <p>Accédez à tous vos cours, ressources vidéo et exercices spécifiques à l'école, que vous soyez étudiant ou enseignant à Bidart.</p>
-            <a href="#connexion" class="btn primary">Accéder à la plateforme</a>
+        <section id="tableau-de-bord" class="dashboard-section">
+            <div class="welcome-message">
+                <h2>Bienvenue sur votre espace de travail, **Étudiant ESTIA** !</h2>
+                <p>Reprenez vos cours là où vous les avez laissés ou explorez de nouvelles ressources.</p>
+            </div>
+
+            <div class="dashboard-grid">
+                
+                <div class="module current-courses">
+                    <h3><i class="fas fa-tasks"></i> Mes Cours Actifs</h3>
+                    <div class="course-list-dashboard">
+                        <article class="course-item">
+                            <h4>Génie Logiciel Avancé (GLA)</h4>
+                            <p class="progress">Progression : **75%**</p>
+                            <div class="progress-bar"><span style="width: 75%;"></span></div>
+                            <a href="#" class="btn secondary small">Continuer le cours</a>
+                        </article>
+                        <article class="course-item">
+                            <h4>Mécanique des Fluides Appliquée (MFA)</h4>
+                            <p class="progress">Progression : **40%**</p>
+                            <div class="progress-bar"><span style="width: 40%;"></span></div>
+                            <a href="#" class="btn secondary small">Continuer le cours</a>
+                        </article>
+                    </div>
+                </div>
+
+                <div class="module quick-links">
+                    <h3><i class="fas fa-link"></i> Accès Rapides</h3>
+                    <ul>
+                        <li><a href="#"><i class="fas fa-calendar-alt"></i> Calendrier des partiels</a></li>
+                        <li><a href="#"><i class="fas fa-file-pdf"></i> Télécharger les notes de cours</a></li>
+                        <li><a href="#"><i class="fas fa-video"></i> Tutoriels vidéo BDE</a></li>
+                        <li class="premium-link"><a href="#premium"><i class="fas fa-star"></i> Support Premium Enseignant</a></li>
+                    </ul>
+                </div>
+                
+                <div class="module new-resource">
+                    <h3><i class="fas fa-bolt"></i> Nouveautés</h3>
+                    <div class="new-item">
+                        <p>**Nouveau cours !** Introduction à l'IA générative.</p>
+                        <a href="#" class="btn primary small">Voir le cours</a>
+                    </div>
+                    <div class="new-item">
+                        <p>**Vidéo ajoutée** : Correction de l'exercice 4 de Math.</p>
+                        <a href="#" class="btn secondary small">Regarder</a>
+                    </div>
+                </div>
+            </div>
         </section>
         
+        <hr/>
+        
         <section id="connexion" class="auth-section">
-            <h3>Connexion</h3>
-            <p>Veuillez vous identifier pour accéder à votre espace.</p>
+            <h3>Connexion - Authentification Sécurisée</h3>
+            <p>Veuillez vous identifier pour accéder à votre espace personnalisé.</p>
             <form class="auth-form">
                 <div class="input-group">
                     <label for="email">Email ESTIA</label>
-                    <input type="email" id="email" name="email" required>
+                    <input type="email" id="email" name="email" placeholder="prenom.nom@estia.fr" required>
                 </div>
                 <div class="input-group">
                     <label for="password">Mot de passe</label>
@@ -45,47 +97,26 @@
                 </div>
                 
                 <div class="role-selector">
-                    <input type="radio" id="etudiant" name="role" value="etudiant" checked>
-                    <label for="etudiant">Étudiant</label>
+                    <input type="radio" id="etudiant_auth" name="role" value="etudiant" checked>
+                    <label for="etudiant_auth"><i class="fas fa-user-graduate"></i> Étudiant</label>
                     
-                    <input type="radio" id="enseignant" name="role" value="enseignant">
-                    <label for="enseignant">Enseignant</label>
+                    <input type="radio" id="enseignant_auth" name="role" value="enseignant">
+                    <label for="enseignant_auth"><i class="fas fa-chalkboard-teacher"></i> Enseignant</label>
                 </div>
                 
-                <button type="submit" class="btn primary">Se connecter</button>
+                <button type="submit" class="btn primary large">Se connecter</button>
             </form>
             
             <p class="note-role">
-                * Les **enseignants** auront des droits spécifiques pour **ajouter/supprimer des cours** et pour le support **Premium**.
+                * Les enseignants ont accès au panneau d'administration pour la gestion des cours.
             </p>
-        </section>
-        
-        <section id="cours" class="course-preview">
-            <h3>Explorez nos Matières</h3>
-            <div class="course-list">
-                <article class="course-card">
-                    <h4>📐 Génie Mécanique</h4>
-                    <p>Cours et TD en RDM, Conception, CAO.</p>
-                    <div class="video-placeholder">[Vidéo intégrée : Aperçu du cours de RDM]</div>
-                </article>
-                <article class="course-card">
-                    <h4>💻 Informatique & Data</h4>
-                    <p>Programmation Python, Bases de données, Cloud.</p>
-                    <div class="video-placeholder">[Vidéo intégrée : Introduction au Machine Learning]</div>
-                </article>
-                <article class="course-card">
-                    <h4>📈 Management & Finance</h4>
-                    <p>Gestion de projet, Comptabilité, Stratégie.</p>
-                    <div class="video-placeholder">[Vidéo intégrée : Les bases du Lean Management]</div>
-                </article>
-            </div>
         </section>
         
     </main>
 
     <footer>
         <div class="container">
-            <p>&copy; 2025 ESTIA E-Learning | Bidart, France</p>
+            <p><i class="fas fa-school"></i> ESTIA Bidart - Plateforme E-Learning | Tous droits réservés.</p>
         </div>
     </footer>
 
