@@ -3,12 +3,91 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <link rel="stylesheet" href="styles/desktop.css" media="screen and (min-width: 768px)"> 
-    <link rel="stylesheet" href="styles/mobile.css" media="screen and (max-width: 767px)"> 
-    <title>Document</title>
+    <title>ESTIA E-Learning - Accès aux Cours</title>
+    <link rel="stylesheet" href="desktop.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    
+
+    <header>
+        <div class="container">
+            <h1>ESTIA E-Learning</h1>
+            <nav>
+                <ul>
+                    <li><a href="#accueil">Accueil</a></li>
+                    <li><a href="#cours">Cours</a></li>
+                    <li><a href="#premium">Abonnement Premium</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        
+        <section id="hero" class="hero">
+            <h2>Votre Plateforme d'Apprentissage ESTIA</h2>
+            <p>Accédez à tous vos cours, ressources vidéo et exercices spécifiques à l'école, que vous soyez étudiant ou enseignant à Bidart.</p>
+            <a href="#connexion" class="btn primary">Accéder à la plateforme</a>
+        </section>
+        
+        <section id="connexion" class="auth-section">
+            <h3>Connexion</h3>
+            <p>Veuillez vous identifier pour accéder à votre espace.</p>
+            <form class="auth-form">
+                <div class="input-group">
+                    <label for="email">Email ESTIA</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="input-group">
+                    <label for="password">Mot de passe</label>
+                    <input type="password" id="password" name="password" required>
+                </div>
+                
+                <div class="role-selector">
+                    <input type="radio" id="etudiant" name="role" value="etudiant" checked>
+                    <label for="etudiant">Étudiant</label>
+                    
+                    <input type="radio" id="enseignant" name="role" value="enseignant">
+                    <label for="enseignant">Enseignant</label>
+                </div>
+                
+                <button type="submit" class="btn primary">Se connecter</button>
+            </form>
+            
+            <p class="note-role">
+                * Les **enseignants** auront des droits spécifiques pour **ajouter/supprimer des cours** et pour le support **Premium**.
+            </p>
+        </section>
+        
+        <section id="cours" class="course-preview">
+            <h3>Explorez nos Matières</h3>
+            <div class="course-list">
+                <article class="course-card">
+                    <h4>📐 Génie Mécanique</h4>
+                    <p>Cours et TD en RDM, Conception, CAO.</p>
+                    <div class="video-placeholder">[Vidéo intégrée : Aperçu du cours de RDM]</div>
+                </article>
+                <article class="course-card">
+                    <h4>💻 Informatique & Data</h4>
+                    <p>Programmation Python, Bases de données, Cloud.</p>
+                    <div class="video-placeholder">[Vidéo intégrée : Introduction au Machine Learning]</div>
+                </article>
+                <article class="course-card">
+                    <h4>📈 Management & Finance</h4>
+                    <p>Gestion de projet, Comptabilité, Stratégie.</p>
+                    <div class="video-placeholder">[Vidéo intégrée : Les bases du Lean Management]</div>
+                </article>
+            </div>
+        </section>
+        
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 ESTIA E-Learning | Bidart, France</p>
+        </div>
+    </footer>
+
 </body>
 </html>
