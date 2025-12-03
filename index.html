@@ -3,122 +3,836 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ESTIA E-Learning - Ma Plateforme</title>
-    <link rel="stylesheet" href="desktop.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"> </head>
-<body>
+    <title>ESTIA Learning - Plateforme d'éducation en ligne</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
+        :root {
+            --primary: #0066cc;
+            --primary-dark: #004999;
+            --secondary: #00a86b;
+            --accent: #ff6b35;
+            --bg-light: #f5f7fa;
+            --bg-white: #ffffff;
+            --text-dark: #2c3e50;
+            --text-light: #7f8c8d;
+            --border: #e1e8ed;
+            --success: #27ae60;
+            --warning: #f39c12;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: var(--bg-light);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: white;
+            padding: 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-top {
+            background: rgba(0,0,0,0.1);
+            padding: 8px 0;
+            font-size: 0.85rem;
+        }
+
+        .header-top .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .location {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        nav {
+            padding: 1rem 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--accent);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: opacity 0.3s;
+            padding: 8px 0;
+            border-bottom: 2px solid transparent;
+        }
+
+        .nav-links a:hover {
+            opacity: 0.8;
+            border-bottom-color: var(--accent);
+        }
+
+        .user-actions {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .btn {
+            padding: 10px 24px;
+            border-radius: 6px;
+            border: none;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: var(--accent);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #ff5722;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(255,107,53,0.3);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .btn-secondary:hover {
+            background: white;
+            color: var(--primary);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, rgba(0,102,204,0.95) 0%, rgba(0,73,153,0.95) 100%),
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><rect fill="%230066cc" width="1200" height="600"/><g fill="%23ffffff" opacity="0.05"><circle cx="100" cy="100" r="80"/><circle cx="400" cy="200" r="100"/><circle cx="800" cy="150" r="90"/><circle cx="1000" cy="400" r="120"/><circle cx="300" cy="500" r="70"/></g></svg>');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            animation: fadeInUp 0.8s;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+            animation: fadeInUp 0.8s 0.2s both;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            animation: fadeInUp 0.8s 0.4s both;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Stats Section */
+        .stats {
+            background: white;
+            padding: 3rem 0;
+            box-shadow: 0 -5px 20px rgba(0,0,0,0.05);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            text-align: center;
+        }
+
+        .stat-item h3 {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-item p {
+            color: var(--text-light);
+            font-size: 1.1rem;
+        }
+
+        /* Main Content */
+        .main-content {
+            padding: 4rem 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--text-dark);
+            margin-bottom: 1rem;
+        }
+
+        .section-title p {
+            color: var(--text-light);
+            font-size: 1.1rem;
+        }
+
+        /* Tabs */
+        .tabs {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .tab-btn {
+            padding: 12px 30px;
+            background: white;
+            border: 2px solid var(--border);
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+            color: var(--text-dark);
+        }
+
+        .tab-btn.active {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+
+        .tab-btn:hover {
+            border-color: var(--primary);
+        }
+
+        /* Courses Grid */
+        .courses-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .course-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+        }
+
+        .course-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+
+        .course-image {
+            height: 180px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            color: white;
+            position: relative;
+        }
+
+        .course-level {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: rgba(255,255,255,0.95);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        .course-content {
+            padding: 1.5rem;
+        }
+
+        .course-content h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-dark);
+        }
+
+        .course-content p {
+            color: var(--text-light);
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+        }
+
+        .course-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid var(--border);
+        }
+
+        .course-meta span {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background: var(--bg-light);
+            border-radius: 4px;
+            overflow: hidden;
+            margin-bottom: 0.5rem;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--secondary) 0%, var(--primary) 100%);
+            border-radius: 4px;
+            transition: width 0.5s;
+        }
+
+        .progress-text {
+            font-size: 0.85rem;
+            color: var(--text-light);
+            text-align: right;
+        }
+
+        /* Features Section */
+        .features {
+            background: white;
+            padding: 4rem 0;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature-card {
+            text-align: center;
+            padding: 2rem;
+            border-radius: 12px;
+            transition: all 0.3s;
+        }
+
+        .feature-card:hover {
+            background: var(--bg-light);
+            transform: translateY(-5px);
+        }
+
+        .feature-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 1.5rem;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            color: white;
+        }
+
+        .feature-card h3 {
+            margin-bottom: 1rem;
+            color: var(--text-dark);
+        }
+
+        .feature-card p {
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+
+        /* Pricing Section */
+        .pricing {
+            padding: 4rem 0;
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .pricing-card {
+            background: white;
+            border-radius: 12px;
+            padding: 2.5rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            text-align: center;
+            transition: all 0.3s;
+            position: relative;
+        }
+
+        .pricing-card.featured {
+            border: 3px solid var(--primary);
+            transform: scale(1.05);
+        }
+
+        .pricing-card.featured::before {
+            content: "POPULAIRE";
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--accent);
+            color: white;
+            padding: 5px 20px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+        }
+
+        .pricing-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--text-dark);
+        }
+
+        .price {
+            font-size: 3rem;
+            font-weight: bold;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .price-period {
+            color: var(--text-light);
+            margin-bottom: 2rem;
+        }
+
+        .features-list {
+            list-style: none;
+            margin-bottom: 2rem;
+            text-align: left;
+        }
+
+        .features-list li {
+            padding: 0.75rem 0;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .features-list li:before {
+            content: "✓";
+            color: var(--success);
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        /* Discussion Forum */
+        .forum {
+            background: white;
+            padding: 4rem 0;
+        }
+
+        .forum-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .forum-item {
+            background: var(--bg-light);
+            padding: 1.5rem;
+            border-radius: 12px;
+            display: flex;
+            gap: 1.5rem;
+            align-items: start;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .forum-item:hover {
+            background: white;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .forum-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+
+        .forum-content {
+            flex: 1;
+        }
+
+        .forum-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.5rem;
+        }
+
+        .forum-title {
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+
+        .forum-time {
+            font-size: 0.85rem;
+            color: var(--text-light);
+        }
+
+        .forum-text {
+            color: var(--text-light);
+            margin-bottom: 0.5rem;
+        }
+
+        .forum-meta {
+            display: flex;
+            gap: 1.5rem;
+            font-size: 0.85rem;
+            color: var(--text-light);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--text-dark);
+            color: white;
+            padding: 3rem 0 1rem;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 1rem;
+            color: var(--accent);
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-section a {
+            color: rgba(255,255,255,0.8);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-section a:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: rgba(255,255,255,0.6);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+            }
+
+            .courses-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .pricing-card.featured {
+                transform: scale(1);
+            }
+
+            .section-title h2 {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
     <header>
-        <div class="container">
-            <div class="logo">
-                <i class="fas fa-graduation-cap"></i>
-                <h1>ESTIA | E-Plateforme</h1>
-            </div>
-            <nav>
-                <ul>
-                    <li><a href="#tableau-de-bord"><i class="fas fa-home"></i> Tableau de Bord</a></li>
-                    <li><a href="#catalogue"><i class="fas fa-book"></i> Catalogue</a></li>
-                    <li><a href="#premium"><i class="fas fa-crown"></i> Premium</a></li>
-                    <li><a href="#aide"><i class="fas fa-question-circle"></i> Aide</a></li>
-                </ul>
-            </nav>
-            <div class="user-action">
-                <a href="#connexion" class="btn primary"><i class="fas fa-sign-in-alt"></i> Connexion</a>
+        <div class="header-top">
+            <div class="container">
+                <div class="location">
+                    <span>📍</span>
+                    <span>ESTIA - Bidart, Nouvelle-Aquitaine</span>
+                </div>
+                <div>
+                    <span>Bienvenue sur votre plateforme d'apprentissage</span>
+                </div>
             </div>
         </div>
+        <nav>
+            <div class="container">
+                <div class="nav-content">
+                    <div class="logo">
+                        <div class="logo-icon">🎓</div>
+                        <span>ESTIA Learning</span>
+                    </div>
+                    <ul class="nav-links">
+                        <li><a href="#cours">Cours</a></li>
+                        <li><a href="#progression">Ma Progression</a></li>
+                        <li><a href="#forum">Forum</a></li>
+                        <li><a href="#tarifs">Tarifs</a></li>
+                    </ul>
+                    <div class="user-actions">
+                        <a href="#" class="btn btn-secondary">Connexion</a>
+                        <a href="#" class="btn btn-primary">S'inscrire</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
     </header>
 
-    <main class="container">
-        
-        <section id="tableau-de-bord" class="dashboard-section">
-            <div class="welcome-message">
-                <h2>Bienvenue sur votre espace de travail, **Étudiant ESTIA** !</h2>
-                <p>Reprenez vos cours là où vous les avez laissés ou explorez de nouvelles ressources.</p>
-            </div>
-
-            <div class="dashboard-grid">
-                
-                <div class="module current-courses">
-                    <h3><i class="fas fa-tasks"></i> Mes Cours Actifs</h3>
-                    <div class="course-list-dashboard">
-                        <article class="course-item">
-                            <h4>Génie Logiciel Avancé (GLA)</h4>
-                            <p class="progress">Progression : **75%**</p>
-                            <div class="progress-bar"><span style="width: 75%;"></span></div>
-                            <a href="#" class="btn secondary small">Continuer le cours</a>
-                        </article>
-                        <article class="course-item">
-                            <h4>Mécanique des Fluides Appliquée (MFA)</h4>
-                            <p class="progress">Progression : **40%**</p>
-                            <div class="progress-bar"><span style="width: 40%;"></span></div>
-                            <a href="#" class="btn secondary small">Continuer le cours</a>
-                        </article>
-                    </div>
-                </div>
-
-                <div class="module quick-links">
-                    <h3><i class="fas fa-link"></i> Accès Rapides</h3>
-                    <ul>
-                        <li><a href="#"><i class="fas fa-calendar-alt"></i> Calendrier des partiels</a></li>
-                        <li><a href="#"><i class="fas fa-file-pdf"></i> Télécharger les notes de cours</a></li>
-                        <li><a href="#"><i class="fas fa-video"></i> Tutoriels vidéo BDE</a></li>
-                        <li class="premium-link"><a href="#premium"><i class="fas fa-star"></i> Support Premium Enseignant</a></li>
-                    </ul>
-                </div>
-                
-                <div class="module new-resource">
-                    <h3><i class="fas fa-bolt"></i> Nouveautés</h3>
-                    <div class="new-item">
-                        <p>**Nouveau cours !** Introduction à l'IA générative.</p>
-                        <a href="#" class="btn primary small">Voir le cours</a>
-                    </div>
-                    <div class="new-item">
-                        <p>**Vidéo ajoutée** : Correction de l'exercice 4 de Math.</p>
-                        <a href="#" class="btn secondary small">Regarder</a>
-                    </div>
-                </div>
-            </div>
-        </section>
-        
-        <hr/>
-        
-        <section id="connexion" class="auth-section">
-            <h3>Connexion - Authentification Sécurisée</h3>
-            <p>Veuillez vous identifier pour accéder à votre espace personnalisé.</p>
-            <form class="auth-form">
-                <div class="input-group">
-                    <label for="email">Email ESTIA</label>
-                    <input type="email" id="email" name="email" placeholder="prenom.nom@estia.fr" required>
-                </div>
-                <div class="input-group">
-                    <label for="password">Mot de passe</label>
-                    <input type="password" id="password" name="password" required>
-                </div>
-                
-                <div class="role-selector">
-                    <input type="radio" id="etudiant_auth" name="role" value="etudiant" checked>
-                    <label for="etudiant_auth"><i class="fas fa-user-graduate"></i> Étudiant</label>
-                    
-                    <input type="radio" id="enseignant_auth" name="role" value="enseignant">
-                    <label for="enseignant_auth"><i class="fas fa-chalkboard-teacher"></i> Enseignant</label>
-                </div>
-                
-                <button type="submit" class="btn primary large">Se connecter</button>
-            </form>
-            
-            <p class="note-role">
-                * Les enseignants ont accès au panneau d'administration pour la gestion des cours.
-            </p>
-        </section>
-        
-    </main>
-
-    <footer>
+    <section class="hero">
         <div class="container">
-            <p><i class="fas fa-school"></i> ESTIA Bidart - Plateforme E-Learning | Tous droits réservés.</p>
+            <h1>Apprenez à votre rythme avec ESTIA Learning</h1>
+            <p>Plateforme d'éducation en ligne adaptée aux étudiants de l'ESTIA et de la région de Bidart</p>
+            <div class="hero-buttons">
+                <a href="#cours" class="btn btn-primary" style="font-size: 1.1rem; padding: 14px 32px;">Explorer les cours</a>
+                <a href="#tarifs" class="btn btn-secondary" style="font-size: 1.1rem; padding: 14px 32px;">Voir les tarifs</a>
+            </div>
         </div>
-    </footer>
+    </section>
 
-</body>
-</html>
+    <section class="stats">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <h3>500+</h3>
+                    <p>Étudiants actifs</p>
+                </div>
+                <div class="stat-item">
+                    <h3>120+</h3>
+                    <p>Cours disponibles</p>
+                </div>
+                <div class="stat-item">
+                    <h3>95%</h3>
+                    <p>Taux de satisfaction</p>
+                </div>
+                <div class="stat-item">
+                    <h3>24/7</h3>
+                    <p>Accès illimité</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="cours" class="main-content">
+        <div class="container">
+            <div class="section-title">
+                <h2>Vos Cours Personnalisés</h2>
+                <p>Des contenus adaptés à votre niveau de compétence</p>
+            </div>
+
+            <div class="tabs">
+                <button class="tab-btn active">Tous les cours</button>
+                <button class="tab-btn">En cours</button>
+                <button class="tab-btn">Recommandés</button>
+                <button class="tab-btn">Nouveautés</button>
+            </div>
+
+            <div id="progression" class="courses-grid">
+                <div class="course-card">
+                    <div class="course-image" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+                        💻
+                        <span class="course-level">Débutant</span>
+                    </div>
+                    <div class="course-content">
+                        <h3>Introduction à Python</h3>
+                        <p>Maîtrisez les fondamentaux de la programmation Python pour le développement moderne</p>
+                        <div class="course-meta">
+                            <span>⏱️ 8 heures</span>
+                            <span>👥 234 étudiants</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 65%;"></div>
+                        </div>
+                        <div class="progress-text">65% complété</div>
+                    </div>
+                </div>
+
+                <div class="course-card">
+                    <div class="course-image" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
+                        🎨
+                        <span class="course-level">Intermédiaire</span>
+                    </div>
+                    <div class="course-content">
+                        <h3>Design UI/UX Avancé</h3>
+                        <p>Créez des interfaces utilisateur exceptionnelles avec les dernières techniques de design</p>
+                        <div class="course-meta">
+                            <span>⏱️ 12 heures</span>
+                            <span>👥 189 étudiants</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 30%;"></div>
+                        </div>
+                        <div class="progress-text">30% complété</div>
+                    </div>
+                </div>
+
+                <div class="course-card">
+                    <div class="course-image" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);">
+                        🔬
+                        <span class="course-level">Avancé</span>
+                    </div>
+                    <div class="course-content">
+                        <h3>Intelligence Artificielle</h3>
+                        <p>Explorez le machine learning et le deep learning avec des projets pratiques</p>
+                        <div class="course-meta">
+                            <span>⏱️ 20 heures</span>
+                            <span>👥 145 étudiants</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 10%;"></div>
+                        </div>
+                        <div class="progress-text">10% complété</div>
+                    </div>
+                </div>
+
+                <div class="course-card">
+                    <div class="course-image" style="background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);">
+                        🌐
+                        <span class="course-level">Intermédiaire</span>
+                    </div>
+                    <div class="course-content">
+                        <h3>Développement Web Full-Stack</h3>
+                        <p>Devenez développeur full-stack avec React, Node.js et MongoDB</p>
+                        <div class="course-meta">
+                            <span>⏱️ 16 heures</span>
+                            <span>👥 312 étudiants</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 45%;"></div>
+                        </div>
+                        <div class="progress-text">45% complété</div>
+                    </div>
+                </div>
+
+                <div class="course-card">
+                    <div class="course-image" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);">
+                        📊
+                        <span class="course-level">Débutant</span>
+                    </div>
+                    <div class="course-content">
+                        <h3>Data Science avec R</h3>
+                        <p>Analysez et visualisez des données complexes avec le langage R</p>
+                        <div class="course-meta">
+                            <span>⏱️ 10 heures</span>
+                            <span>👥 201 étudiants</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 0%;"></div>
+                        </div>
+                        <div class="progress-text">Nouveau</div>
+                    </div>
+                </div>
+
+                <div class="course-card">
+                    <div class="course-image" style="background: linear-gradient(135deg, #30cfd0 0
