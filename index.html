@@ -3,836 +3,390 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ESTIA Learning - Plateforme d'éducation en ligne</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        :root {
-            --primary: #0066cc;
-            --primary-dark: #004999;
-            --secondary: #00a86b;
-            --accent: #ff6b35;
-            --bg-light: #f5f7fa;
-            --bg-white: #ffffff;
-            --text-dark: #2c3e50;
-            --text-light: #7f8c8d;
-            --border: #e1e8ed;
-            --success: #27ae60;
-            --warning: #f39c12;
-        }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: var(--bg-light);
-            color: var(--text-dark);
-            line-height: 1.6;
-        }
-
-        /* Header */
-        header {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
-            color: white;
-            padding: 0;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
-
-        .header-top {
-            background: rgba(0,0,0,0.1);
-            padding: 8px 0;
-            font-size: 0.85rem;
-        }
-
-        .header-top .container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .location {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        nav {
-            padding: 1rem 0;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        .nav-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-size: 1.8rem;
-            font-weight: bold;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .logo-icon {
-            width: 40px;
-            height: 40px;
-            background: var(--accent);
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 2rem;
-            list-style: none;
-        }
-
-        .nav-links a {
-            color: white;
-            text-decoration: none;
-            font-weight: 500;
-            transition: opacity 0.3s;
-            padding: 8px 0;
-            border-bottom: 2px solid transparent;
-        }
-
-        .nav-links a:hover {
-            opacity: 0.8;
-            border-bottom-color: var(--accent);
-        }
-
-        .user-actions {
-            display: flex;
-            gap: 1rem;
-            align-items: center;
-        }
-
-        .btn {
-            padding: 10px 24px;
-            border-radius: 6px;
-            border: none;
-            cursor: pointer;
-            font-weight: 600;
-            transition: all 0.3s;
-            text-decoration: none;
-            display: inline-block;
-        }
-
-        .btn-primary {
-            background: var(--accent);
-            color: white;
-        }
-
-        .btn-primary:hover {
-            background: #ff5722;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(255,107,53,0.3);
-        }
-
-        .btn-secondary {
-            background: transparent;
-            color: white;
-            border: 2px solid white;
-        }
-
-        .btn-secondary:hover {
-            background: white;
-            color: var(--primary);
-        }
-
-        /* Hero Section */
-        .hero {
-            background: linear-gradient(135deg, rgba(0,102,204,0.95) 0%, rgba(0,73,153,0.95) 100%),
-                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><rect fill="%230066cc" width="1200" height="600"/><g fill="%23ffffff" opacity="0.05"><circle cx="100" cy="100" r="80"/><circle cx="400" cy="200" r="100"/><circle cx="800" cy="150" r="90"/><circle cx="1000" cy="400" r="120"/><circle cx="300" cy="500" r="70"/></g></svg>');
-            background-size: cover;
-            background-position: center;
-            color: white;
-            padding: 80px 0;
-            text-align: center;
-        }
-
-        .hero h1 {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-            animation: fadeInUp 0.8s;
-        }
-
-        .hero p {
-            font-size: 1.3rem;
-            margin-bottom: 2rem;
-            opacity: 0.95;
-            animation: fadeInUp 0.8s 0.2s both;
-        }
-
-        .hero-buttons {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-            animation: fadeInUp 0.8s 0.4s both;
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        /* Stats Section */
-        .stats {
-            background: white;
-            padding: 3rem 0;
-            box-shadow: 0 -5px 20px rgba(0,0,0,0.05);
-        }
-
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 2rem;
-            text-align: center;
-        }
-
-        .stat-item h3 {
-            font-size: 2.5rem;
-            color: var(--primary);
-            margin-bottom: 0.5rem;
-        }
-
-        .stat-item p {
-            color: var(--text-light);
-            font-size: 1.1rem;
-        }
-
-        /* Main Content */
-        .main-content {
-            padding: 4rem 0;
-        }
-
-        .section-title {
-            text-align: center;
-            margin-bottom: 3rem;
-        }
-
-        .section-title h2 {
-            font-size: 2.5rem;
-            color: var(--text-dark);
-            margin-bottom: 1rem;
-        }
-
-        .section-title p {
-            color: var(--text-light);
-            font-size: 1.1rem;
-        }
-
-        /* Tabs */
-        .tabs {
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-            margin-bottom: 3rem;
-            flex-wrap: wrap;
-        }
-
-        .tab-btn {
-            padding: 12px 30px;
-            background: white;
-            border: 2px solid var(--border);
-            border-radius: 25px;
-            cursor: pointer;
-            font-weight: 600;
-            transition: all 0.3s;
-            color: var(--text-dark);
-        }
-
-        .tab-btn.active {
-            background: var(--primary);
-            color: white;
-            border-color: var(--primary);
-        }
-
-        .tab-btn:hover {
-            border-color: var(--primary);
-        }
-
-        /* Courses Grid */
-        .courses-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-bottom: 3rem;
-        }
-
-        .course-card {
-            background: white;
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-            transition: transform 0.3s, box-shadow 0.3s;
-            cursor: pointer;
-        }
-
-        .course-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
-        }
-
-        .course-image {
-            height: 180px;
-            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 4rem;
-            color: white;
-            position: relative;
-        }
-
-        .course-level {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            background: rgba(255,255,255,0.95);
-            padding: 4px 12px;
-            border-radius: 20px;
-            font-size: 0.75rem;
-            font-weight: 600;
-            color: var(--primary);
-        }
-
-        .course-content {
-            padding: 1.5rem;
-        }
-
-        .course-content h3 {
-            font-size: 1.3rem;
-            margin-bottom: 0.5rem;
-            color: var(--text-dark);
-        }
-
-        .course-content p {
-            color: var(--text-light);
-            margin-bottom: 1rem;
-            font-size: 0.95rem;
-        }
-
-        .course-meta {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 1rem;
-            padding-top: 1rem;
-            border-top: 1px solid var(--border);
-        }
-
-        .course-meta span {
-            display: flex;
-            align-items: center;
-            gap: 5px;
-            font-size: 0.9rem;
-            color: var(--text-light);
-        }
-
-        .progress-bar {
-            width: 100%;
-            height: 8px;
-            background: var(--bg-light);
-            border-radius: 4px;
-            overflow: hidden;
-            margin-bottom: 0.5rem;
-        }
-
-        .progress-fill {
-            height: 100%;
-            background: linear-gradient(90deg, var(--secondary) 0%, var(--primary) 100%);
-            border-radius: 4px;
-            transition: width 0.5s;
-        }
-
-        .progress-text {
-            font-size: 0.85rem;
-            color: var(--text-light);
-            text-align: right;
-        }
-
-        /* Features Section */
-        .features {
-            background: white;
-            padding: 4rem 0;
-        }
-
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-        }
-
-        .feature-card {
-            text-align: center;
-            padding: 2rem;
-            border-radius: 12px;
-            transition: all 0.3s;
-        }
-
-        .feature-card:hover {
-            background: var(--bg-light);
-            transform: translateY(-5px);
-        }
-
-        .feature-icon {
-            width: 80px;
-            height: 80px;
-            margin: 0 auto 1.5rem;
-            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2.5rem;
-            color: white;
-        }
-
-        .feature-card h3 {
-            margin-bottom: 1rem;
-            color: var(--text-dark);
-        }
-
-        .feature-card p {
-            color: var(--text-light);
-            line-height: 1.6;
-        }
-
-        /* Pricing Section */
-        .pricing {
-            padding: 4rem 0;
-        }
-
-        .pricing-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .pricing-card {
-            background: white;
-            border-radius: 12px;
-            padding: 2.5rem;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-            text-align: center;
-            transition: all 0.3s;
-            position: relative;
-        }
-
-        .pricing-card.featured {
-            border: 3px solid var(--primary);
-            transform: scale(1.05);
-        }
-
-        .pricing-card.featured::before {
-            content: "POPULAIRE";
-            position: absolute;
-            top: -15px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: var(--accent);
-            color: white;
-            padding: 5px 20px;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: 600;
-        }
-
-        .pricing-card:hover {
-            transform: translateY(-10px) scale(1.02);
-            box-shadow: 0 8px 30px rgba(0,0,0,0.15);
-        }
-
-        .pricing-card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-            color: var(--text-dark);
-        }
-
-        .price {
-            font-size: 3rem;
-            font-weight: bold;
-            color: var(--primary);
-            margin-bottom: 0.5rem;
-        }
-
-        .price-period {
-            color: var(--text-light);
-            margin-bottom: 2rem;
-        }
-
-        .features-list {
-            list-style: none;
-            margin-bottom: 2rem;
-            text-align: left;
-        }
-
-        .features-list li {
-            padding: 0.75rem 0;
-            border-bottom: 1px solid var(--border);
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .features-list li:before {
-            content: "✓";
-            color: var(--success);
-            font-weight: bold;
-            font-size: 1.2rem;
-        }
-
-        /* Discussion Forum */
-        .forum {
-            background: white;
-            padding: 4rem 0;
-        }
-
-        .forum-list {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-        }
-
-        .forum-item {
-            background: var(--bg-light);
-            padding: 1.5rem;
-            border-radius: 12px;
-            display: flex;
-            gap: 1.5rem;
-            align-items: start;
-            transition: all 0.3s;
-            cursor: pointer;
-        }
-
-        .forum-item:hover {
-            background: white;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-        }
-
-        .forum-avatar {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-weight: bold;
-            flex-shrink: 0;
-        }
-
-        .forum-content {
-            flex: 1;
-        }
-
-        .forum-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 0.5rem;
-        }
-
-        .forum-title {
-            font-weight: 600;
-            color: var(--text-dark);
-        }
-
-        .forum-time {
-            font-size: 0.85rem;
-            color: var(--text-light);
-        }
-
-        .forum-text {
-            color: var(--text-light);
-            margin-bottom: 0.5rem;
-        }
-
-        .forum-meta {
-            display: flex;
-            gap: 1.5rem;
-            font-size: 0.85rem;
-            color: var(--text-light);
-        }
-
-        /* Footer */
-        footer {
-            background: var(--text-dark);
-            color: white;
-            padding: 3rem 0 1rem;
-        }
-
-        .footer-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-bottom: 2rem;
-        }
-
-        .footer-section h3 {
-            margin-bottom: 1rem;
-            color: var(--accent);
-        }
-
-        .footer-section ul {
-            list-style: none;
-        }
-
-        .footer-section ul li {
-            margin-bottom: 0.5rem;
-        }
-
-        .footer-section a {
-            color: rgba(255,255,255,0.8);
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-
-        .footer-section a:hover {
-            color: white;
-        }
-
-        .footer-bottom {
-            text-align: center;
-            padding-top: 2rem;
-            border-top: 1px solid rgba(255,255,255,0.1);
-            color: rgba(255,255,255,0.6);
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-            }
-
-            .hero h1 {
-                font-size: 2rem;
-            }
-
-            .hero p {
-                font-size: 1rem;
-            }
-
-            .hero-buttons {
-                flex-direction: column;
-            }
-
-            .courses-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .pricing-card.featured {
-                transform: scale(1);
-            }
-
-            .section-title h2 {
-                font-size: 1.8rem;
-            }
-        }
-    </style>
+    <title>Mudel - Plateforme d'apprentissage ESTIA</title>
+    <link rel="stylesheet" href="styles/desktop.css">
 </head>
 <body>
-    <header>
-        <div class="header-top">
-            <div class="container">
-                <div class="location">
-                    <span>📍</span>
-                    <span>ESTIA - Bidart, Nouvelle-Aquitaine</span>
+    <!-- Modal de connexion -->
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Connexion à Mudel</h2>
+            <form id="loginForm">
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" placeholder="votre.email@estia.fr" required>
                 </div>
-                <div>
-                    <span>Bienvenue sur votre plateforme d'apprentissage</span>
+                <div class="form-group">
+                    <label for="password">Mot de passe</label>
+                    <input type="password" id="password" name="password" placeholder="••••••••" required>
                 </div>
-            </div>
+                <button type="submit" class="btn btn-primary btn-full">Se connecter</button>
+                <p class="forgot-password">
+                    <a href="#">Mot de passe oublié ?</a>
+                </p>
+            </form>
         </div>
+    </div>
+
+    <header>
         <nav>
-            <div class="container">
-                <div class="nav-content">
-                    <div class="logo">
-                        <div class="logo-icon">🎓</div>
-                        <span>ESTIA Learning</span>
-                    </div>
-                    <ul class="nav-links">
-                        <li><a href="#cours">Cours</a></li>
-                        <li><a href="#progression">Ma Progression</a></li>
-                        <li><a href="#forum">Forum</a></li>
-                        <li><a href="#tarifs">Tarifs</a></li>
-                    </ul>
-                    <div class="user-actions">
-                        <a href="#" class="btn btn-secondary">Connexion</a>
-                        <a href="#" class="btn btn-primary">S'inscrire</a>
-                    </div>
-                </div>
+            <div class="logo">
+                📚 Mudel
+            </div>
+            <ul class="nav-links">
+                <li><a href="#accueil">Accueil</a></li>
+                <li><a href="#cours">Cours</a></li>
+                <li><a href="#progression">Ma Progression</a></li>
+                <li><a href="#forum">Forum</a></li>
+                <li><a href="#premium">Premium</a></li>
+            </ul>
+            <div class="user-menu">
+                <button id="loginBtn" class="btn btn-secondary">Connexion</button>
+                <button class="btn btn-primary">S'inscrire</button>
             </div>
         </nav>
     </header>
 
-    <section class="hero">
-        <div class="container">
-            <h1>Apprenez à votre rythme avec ESTIA Learning</h1>
-            <p>Plateforme d'éducation en ligne adaptée aux étudiants de l'ESTIA et de la région de Bidart</p>
-            <div class="hero-buttons">
-                <a href="#cours" class="btn btn-primary" style="font-size: 1.1rem; padding: 14px 32px;">Explorer les cours</a>
-                <a href="#tarifs" class="btn btn-secondary" style="font-size: 1.1rem; padding: 14px 32px;">Voir les tarifs</a>
+    <section class="hero" id="accueil">
+        <h1>🎓 Bienvenue sur Mudel</h1>
+        <p>Plateforme d'apprentissage interactive pour l'ESTIA et la région de Bidart</p>
+        <div class="stats">
+            <div class="stat-item">
+                <div class="stat-number">2,500+</div>
+                <div>Étudiants actifs</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">150+</div>
+                <div>Cours disponibles</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">95%</div>
+                <div>Taux de satisfaction</div>
             </div>
         </div>
+        <button class="btn btn-primary btn-large">Commencer gratuitement</button>
     </section>
 
-    <section class="stats">
-        <div class="container">
-            <div class="stats-grid">
-                <div class="stat-item">
-                    <h3>500+</h3>
-                    <p>Étudiants actifs</p>
+    <div class="container">
+        <section class="section" id="progression">
+            <h2 class="section-title">📊 Tableau de Bord</h2>
+            <div class="dashboard">
+                <div class="card">
+                    <div class="card-icon">📖</div>
+                    <h3>Cours en cours</h3>
+                    <p>5 cours actifs</p>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 65%"></div>
+                    </div>
+                    <p class="progress-text">Progression globale: 65%</p>
                 </div>
-                <div class="stat-item">
-                    <h3>120+</h3>
-                    <p>Cours disponibles</p>
+
+                <div class="card">
+                    <div class="card-icon">🏆</div>
+                    <h3>Niveau actuel</h3>
+                    <p>Intermédiaire</p>
+                    <span class="level-badge level-intermediate">Niveau 3</span>
+                    <p class="xp-text">850 points XP</p>
                 </div>
-                <div class="stat-item">
-                    <h3>95%</h3>
-                    <p>Taux de satisfaction</p>
+
+                <div class="card">
+                    <div class="card-icon">⏱️</div>
+                    <h3>Temps d'apprentissage</h3>
+                    <p class="time-display">24h 30m</p>
+                    <p class="week-text">Cette semaine: 5h 15m</p>
                 </div>
-                <div class="stat-item">
-                    <h3>24/7</h3>
-                    <p>Accès illimité</p>
+
+                <div class="card">
+                    <div class="card-icon">✅</div>
+                    <h3>Certifications</h3>
+                    <p>3 certificats obtenus</p>
+                    <p class="cert-text">2 en cours de validation</p>
                 </div>
+            </div>
+        </section>
+
+        <section class="section" id="cours">
+            <h2 class="section-title">🎯 Cours Disponibles</h2>
+            <div class="course-grid">
+                <div class="course-card">
+                    <div class="course-image math-bg">📐</div>
+                    <div class="course-content">
+                        <span class="course-tag">Sciences</span>
+                        <span class="level-badge level-intermediate">Intermédiaire</span>
+                        <h3>Mathématiques</h3>
+                        <p>Analyse, algèbre linéaire et calcul différentiel pour l'ingénierie</p>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 45%"></div>
+                        </div>
+                        <p class="course-progress">45% complété • 15h restantes</p>
+                        <button class="btn btn-primary btn-full">Continuer</button>
+                    </div>
+                </div>
+
+                <div class="course-card">
+                    <div class="course-image spanish-bg">🇪🇸</div>
+                    <div class="course-content">
+                        <span class="course-tag">Langues</span>
+                        <span class="level-badge level-beginner">Débutant</span>
+                        <h3>Espagnol</h3>
+                        <p>Apprenez l'espagnol professionnel et technique</p>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 20%"></div>
+                        </div>
+                        <p class="course-progress">20% complété • 30h restantes</p>
+                        <button class="btn btn-primary btn-full">Continuer</button>
+                    </div>
+                </div>
+
+                <div class="course-card">
+                    <div class="course-image english-bg">🇬🇧</div>
+                    <div class="course-content">
+                        <span class="course-tag">Langues</span>
+                        <span class="level-badge level-intermediate">Intermédiaire</span>
+                        <h3>Anglais</h3>
+                        <p>Anglais technique et communication professionnelle</p>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 60%"></div>
+                        </div>
+                        <p class="course-progress">60% complété • 12h restantes</p>
+                        <button class="btn btn-primary btn-full">Continuer</button>
+                    </div>
+                </div>
+
+                <div class="course-card">
+                    <div class="course-image lifecycle-bg">♻️</div>
+                    <div class="course-content">
+                        <span class="course-tag">Ingénierie</span>
+                        <span class="level-badge level-advanced">Avancé</span>
+                        <h3>Cycle de vie du produit</h3>
+                        <p>De la conception à la fin de vie : gestion complète du produit</p>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 30%"></div>
+                        </div>
+                        <p class="course-progress">30% complété • 20h restantes</p>
+                        <button class="btn btn-primary btn-full">Continuer</button>
+                    </div>
+                </div>
+
+                <div class="course-card">
+                    <div class="course-image webdev-bg">💻</div>
+                    <div class="course-content">
+                        <span class="course-tag">Informatique</span>
+                        <span class="level-badge level-intermediate">Intermédiaire</span>
+                        <h3>Développement Web</h3>
+                        <p>HTML, CSS, JavaScript et frameworks modernes</p>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 55%"></div>
+                        </div>
+                        <p class="course-progress">55% complété • 18h restantes</p>
+                        <button class="btn btn-primary btn-full">Continuer</button>
+                    </div>
+                </div>
+
+                <div class="course-card">
+                    <div class="course-image meca-bg">🔧</div>
+                    <div class="course-content">
+                        <span class="course-tag">Mécanique</span>
+                        <span class="level-badge level-advanced">Avancé</span>
+                        <h3>Conception Mécanique</h3>
+                        <p>CAO, simulation numérique et fabrication</p>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 0%"></div>
+                        </div>
+                        <p class="course-progress">Nouveau cours • 25h</p>
+                        <button class="btn btn-primary btn-full">Commencer</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="forum">
+            <h2 class="section-title">💬 Forum de Discussion</h2>
+            <div class="discussion-forum">
+                <div class="discussion-thread">
+                    <div class="thread-header">
+                        <div class="avatar">ML</div>
+                        <div>
+                            <strong>Marie Leclerc</strong>
+                            <span class="thread-time"> • il y a 2h</span>
+                        </div>
+                    </div>
+                    <h4>Question sur les équations différentielles - Cours Mathématiques</h4>
+                    <p class="thread-content">Bonjour, j'ai besoin d'aide pour résoudre les équations du module 3. Quelqu'un peut-il m'expliquer la méthode de Runge-Kutta ?</p>
+                    <div class="thread-actions">
+                        <button class="btn btn-secondary btn-small">Répondre</button>
+                        <span class="thread-stats">👍 12 • 💬 5 réponses</span>
+                    </div>
+                </div>
+
+                <div class="discussion-thread">
+                    <div class="thread-header">
+                        <div class="avatar">JD</div>
+                        <div>
+                            <strong>Jean Dupont</strong>
+                            <span class="thread-time"> • il y a 5h</span>
+                        </div>
+                    </div>
+                    <h4>Projet de groupe - Développement Web</h4>
+                    <p class="thread-content">Je cherche 2-3 personnes pour former un groupe sur le projet final React. Intéressés ?</p>
+                    <div class="thread-actions">
+                        <button class="btn btn-secondary btn-small">Rejoindre</button>
+                        <span class="thread-stats">👍 8 • 💬 3 réponses</span>
+                    </div>
+                </div>
+
+                <div class="discussion-thread">
+                    <div class="thread-header">
+                        <div class="avatar">SP</div>
+                        <div>
+                            <strong>Sophie Petit</strong>
+                            <span class="thread-time"> • il y a 1 jour</span>
+                        </div>
+                    </div>
+                    <h4>Ressources supplémentaires pour Cycle de vie du produit</h4>
+                    <p class="thread-content">Voici quelques ressources que j'ai trouvées utiles pour approfondir le cours d'éco-conception...</p>
+                    <div class="thread-actions">
+                        <button class="btn btn-secondary btn-small">Répondre</button>
+                        <span class="thread-stats">👍 24 • 💬 11 réponses</span>
+                    </div>
+                </div>
+
+                <button class="btn btn-primary btn-full">Créer une nouvelle discussion</button>
+            </div>
+        </section>
+
+        <section class="section" id="premium">
+            <h2 class="section-title">💎 Formules Premium</h2>
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <h3>Gratuit</h3>
+                    <div class="price">0€<span class="price-period">/mois</span></div>
+                    <ul class="features-list">
+                        <li>Accès à 20 cours de base</li>
+                        <li>Forum communautaire</li>
+                        <li>Suivi de progression limité</li>
+                        <li>Support par email</li>
+                    </ul>
+                    <button class="btn btn-secondary btn-full">Plan actuel</button>
+                </div>
+
+                <div class="pricing-card featured">
+                    <span class="featured-badge">Populaire</span>
+                    <h3>Étudiant ESTIA</h3>
+                    <div class="price">15€<span class="price-period">/mois</span></div>
+                    <ul class="features-list">
+                        <li>Accès illimité à tous les cours</li>
+                        <li>Contenu personnalisé adaptatif</li>
+                        <li>Projets collaboratifs</li>
+                        <li>Certificats officiels</li>
+                        <li>Mentorat individuel (2h/mois)</li>
+                        <li>Support prioritaire 24/7</li>
+                        <li>Cours spécifiques région basque</li>
+                    </ul>
+                    <button class="btn btn-primary btn-full">Passer à Premium</button>
+                </div>
+
+                <div class="pricing-card">
+                    <h3>Professionnel</h3>
+                    <div class="price">49€<span class="price-period">/mois</span></div>
+                    <ul class="features-list">
+                        <li>Tous les avantages Étudiant</li>
+                        <li>Formations professionnelles</li>
+                        <li>Networking avec entreprises</li>
+                        <li>Accès aux masterclass</li>
+                        <li>Mentorat illimité</li>
+                        <li>Placement professionnel</li>
+                        <li>Certifications internationales</li>
+                    </ul>
+                    <button class="btn btn-primary btn-full">Choisir Pro</button>
+                </div>
+            </div>
+            <p class="payment-security">
+                🔒 Paiement sécurisé • Annulation à tout moment • Satisfait ou remboursé 14 jours
+            </p>
+        </section>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Mudel</h3>
+                <p>Plateforme d'apprentissage innovante pour l'ESTIA et la région de Bidart</p>
+                <p class="footer-address">📍 Technopole Izarbel, 64210 Bidart</p>
+            </div>
+
+            <div class="footer-section">
+                <h3>Liens Rapides</h3>
+                <ul>
+                    <li><a href="#cours">Catalogue de cours</a></li>
+                    <li><a href="#progression">Ma progression</a></li>
+                    <li><a href="#forum">Forum</a></li>
+                    <li><a href="#premium">Devenir Premium</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h3>Ressources</h3>
+                <ul>
+                    <li><a href="#">Guide de démarrage</a></li>
+                    <li><a href="#">FAQ</a></li>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="#">Nous contacter</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h3>Légal</h3>
+                <ul>
+                    <li><a href="#">Conditions d'utilisation</a></li>
+                    <li><a href="#">Politique de confidentialité</a></li>
+                    <li><a href="#">Mentions légales</a></li>
+                    <li><a href="#">CGV</a></li>
+                </ul>
             </div>
         </div>
-    </section>
+        <p class="footer-copyright">
+            © 2025 Mudel - Tous droits réservés
+        </p>
+    </footer>
 
-    <section id="cours" class="main-content">
-        <div class="container">
-            <div class="section-title">
-                <h2>Vos Cours Personnalisés</h2>
-                <p>Des contenus adaptés à votre niveau de compétence</p>
-            </div>
+    <script>
+        // Gestion du modal de connexion
+        const modal = document.getElementById('loginModal');
+        const loginBtn = document.getElementById('loginBtn');
+        const closeBtn = document.getElementsByClassName('close')[0];
+        const loginForm = document.getElementById('loginForm');
 
-            <div class="tabs">
-                <button class="tab-btn active">Tous les cours</button>
-                <button class="tab-btn">En cours</button>
-                <button class="tab-btn">Recommandés</button>
-                <button class="tab-btn">Nouveautés</button>
-            </div>
+        // Ouvrir le modal
+        loginBtn.onclick = function() {
+            modal.style.display = 'block';
+        }
 
-            <div id="progression" class="courses-grid">
-                <div class="course-card">
-                    <div class="course-image" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
-                        💻
-                        <span class="course-level">Débutant</span>
-                    </div>
-                    <div class="course-content">
-                        <h3>Introduction à Python</h3>
-                        <p>Maîtrisez les fondamentaux de la programmation Python pour le développement moderne</p>
-                        <div class="course-meta">
-                            <span>⏱️ 8 heures</span>
-                            <span>👥 234 étudiants</span>
-                        </div>
-                        <div class="progress-bar">
-                            <div class="progress-fill" style="width: 65%;"></div>
-                        </div>
-                        <div class="progress-text">65% complété</div>
-                    </div>
-                </div>
+        // Fermer le modal
+        closeBtn.onclick = function() {
+            modal.style.display = 'none';
+        }
 
-                <div class="course-card">
-                    <div class="course-image" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
-                        🎨
-                        <span class="course-level">Intermédiaire</span>
-                    </div>
-                    <div class="course-content">
-                        <h3>Design UI/UX Avancé</h3>
-                        <p>Créez des interfaces utilisateur exceptionnelles avec les dernières techniques de design</p>
-                        <div class="course-meta">
-                            <span>⏱️ 12 heures</span>
-                            <span>👥 189 étudiants</span>
-                        </div>
-                        <div class="progress-bar">
-                            <div class="progress-fill" style="width: 30%;"></div>
-                        </div>
-                        <div class="progress-text">30% complété</div>
-                    </div>
-                </div>
+        // Fermer si on clique en dehors du modal
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = 'none';
+            }
+        }
 
-                <div class="course-card">
-                    <div class="course-image" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);">
-                        🔬
-                        <span class="course-level">Avancé</span>
-                    </div>
-                    <div class="course-content">
-                        <h3>Intelligence Artificielle</h3>
-                        <p>Explorez le machine learning et le deep learning avec des projets pratiques</p>
-                        <div class="course-meta">
-                            <span>⏱️ 20 heures</span>
-                            <span>👥 145 étudiants</span>
-                        </div>
-                        <div class="progress-bar">
-                            <div class="progress-fill" style="width: 10%;"></div>
-                        </div>
-                        <div class="progress-text">10% complété</div>
-                    </div>
-                </div>
-
-                <div class="course-card">
-                    <div class="course-image" style="background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);">
-                        🌐
-                        <span class="course-level">Intermédiaire</span>
-                    </div>
-                    <div class="course-content">
-                        <h3>Développement Web Full-Stack</h3>
-                        <p>Devenez développeur full-stack avec React, Node.js et MongoDB</p>
-                        <div class="course-meta">
-                            <span>⏱️ 16 heures</span>
-                            <span>👥 312 étudiants</span>
-                        </div>
-                        <div class="progress-bar">
-                            <div class="progress-fill" style="width: 45%;"></div>
-                        </div>
-                        <div class="progress-text">45% complété</div>
-                    </div>
-                </div>
-
-                <div class="course-card">
-                    <div class="course-image" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);">
-                        📊
-                        <span class="course-level">Débutant</span>
-                    </div>
-                    <div class="course-content">
-                        <h3>Data Science avec R</h3>
-                        <p>Analysez et visualisez des données complexes avec le langage R</p>
-                        <div class="course-meta">
-                            <span>⏱️ 10 heures</span>
-                            <span>👥 201 étudiants</span>
-                        </div>
-                        <div class="progress-bar">
-                            <div class="progress-fill" style="width: 0%;"></div>
-                        </div>
-                        <div class="progress-text">Nouveau</div>
-                    </div>
-                </div>
-
-                <div class="course-card">
-                    <div class="course-image" style="background: linear-gradient(135deg, #30cfd0 0
+        // Gestion de la soumission du formulaire
+        loginForm.onsubmit = function(e) {
+            e.preventDefault();
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            
+            // Ici vous pouvez ajouter votre logique de connexion
+            alert('Connexion en cours pour : ' + email);
+            
+            // Fermer le modal après connexion
+            modal.style.display = 'none';
+        }
+    </script>
+</body>
+</html>
