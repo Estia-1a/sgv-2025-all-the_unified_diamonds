@@ -70,3 +70,35 @@ nav {
     gap: 1rem;
     align-items: center;
 }
+
+/* ===== BUTTONS ===== */
+.btn {
+    padding: 0.6rem 1.5rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: all 0.3s;
+    text-decoration: none;
+    display: inline-block;
+    text-align: center;
+}
+
+.btn-secondary {
+    background: rgb(243, 240, 240);
+    color: var(--primary);
+}
+
+.btn-secondary:hover {
+    background: #f0f0f0;
+}
+
+.btn-full {
+    width: 100%;
+    margin-top: 1rem;
+}
+
+.btn-large {
+    font-size: 1.1rem;
+    padding: 1rem 2rem;
+}
