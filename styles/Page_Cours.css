@@ -207,3 +207,134 @@ nav {
     margin: 20px auto;
     padding: 0 2rem;
 }
+/* ===== PAGE COURS : CONTRÔLES (RECHERCHE/TRI) ===== */
+
+.cours-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+}
+
+.cours-header h2 {
+    font-size: 1.8rem;
+    color: var(--dark);
+}
+
+.controls-bar {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+/* Champ de recherche */
+.search-box {
+    display: flex;
+    align-items: center;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 5px 10px;
+    background-color: white;
+}
+
+.search-input {
+    border: none;
+    padding: 5px 0;
+    font-size: 1rem;
+    outline: none; /* Supprime le contour au focus */
+    width: 200px;
+}
+
+.search-icon {
+    color: #888;
+    margin-right: 5px;
+}
+
+/* Bouton de Tri */
+.sort-btn {
+    background: white;
+    color: var(--primary);
+    border: 1px solid var(--primary);
+    padding: 8px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    transition: background 0.2s;
+}
+
+.sort-btn:hover {
+    background: var(--light);
+}
+
+/* ===== PAGE COURS : CARTES (CARDS) ===== */
+
+.favorite-courses h3 {
+    font-size: 1.5rem;
+    color: var(--dark);
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+}
+
+.favorite-courses .check-icon {
+    color: #4CAF50; /* Vert pour le checkmark */
+    font-size: 1.2rem;
+    margin-left: 8px;
+    font-weight: bold;
+}
+
+.courses-grid {
+    display: grid;
+    /* Crée 3 colonnes de taille égale */
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 20px;
+    padding-bottom: 50px;
+}
+
+.course-card {
+    /* Style de base de la carte */
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    height: 200px; /* Taille fixe pour l'exemple */
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    text-decoration: none; /* Pour enlever le soulignement du lien */
+    color: #333;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.course-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+}
+
+.course-card h4 {
+    font-size: 1.4rem;
+    font-weight: 600;
+}
+
+/* Style de l'indicateur Favori */
+.favorite-checkbox {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #888; /* Couleur par défaut */
+}
+
+/* Style spécifique pour la case cochée */
+.favorite-checkbox.checked {
+    color: var(--primary); /* Utilisez votre couleur primaire pour le checked */
+}
+
+/* Style pour la case non-cochée (facultatif si vous voulez plus de contraste) */
+.favorite-checkbox.unchecked {
+    color: #ccc;
+}
