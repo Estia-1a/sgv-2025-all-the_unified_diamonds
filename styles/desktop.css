@@ -139,3 +139,21 @@ nav {
     font-weight: bold;
     color: white;
 }
+
+/* ===== CONTAINER & SECTIONS ===== */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.section {
+    margin: 3rem 0;
+}
+
+.section-title {
+    font-size: 2rem;
+    color: var(--dark);
+    margin-bottom: 2rem;
+    text-align: center;
+}
