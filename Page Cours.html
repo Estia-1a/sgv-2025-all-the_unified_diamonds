@@ -5,60 +5,363 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mudel - Liste des Cours</title>
     
-    <link rel="stylesheet" href="style.css">
-    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+    <style>
+        /* ========================================================================= */
+        /* COLLER ICI LE CODE CSS QUE VOUS M'AVEZ FOURNI (RESET, VARIABLES, HEADER...) */
+        /* ========================================================================= */
+        
+        /* ===== RESET & VARIABLES (Votre Code) ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #0066cc;
+            --secondary: #ff6b35;
+            --dark: #1a1a2e;
+            --light: #f5f5f5;
+            /* Couleurs pour les statuts des cours */
+            --status-success: #4CAF50;
+            --status-warning: #ff9800;
+            --status-danger: #f44336;
+            --text-color: #333;
+            --border-color: #ddd;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background: var(--light);
+        }
+
+        /* ===== HEADER & NAVIGATION (Votre Code) ===== */
+        header {
+            background: linear-gradient(135deg, var(--primary), #0052a3);
+            color: white;
+            padding: 1rem 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 1.4rem;
+            font-weight: bold;
+        }
+
+        .logo img {
+            height: 40px; /* Ajusté la taille */
+            width: auto;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            flex-grow: 1; /* Permet aux liens de prendre de l'espace */
+            margin-left: 2rem;
+        }
+        
+        .nav-links li {
+            position: relative;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: opacity 0.3s;
+            padding: 0.5rem 0;
+            display: block;
+        }
+        
+        /* Ajout du style pour l'onglet actif */
+        .nav-links a.active {
+            font-weight: bold;
+            border-bottom: 3px solid var(--secondary); /* Surlignage avec la couleur secondaire */
+        }
+
+
+        .user-menu {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+            margin-left: 1rem;
+        }
+
+        /* ===== BUTTONS (Votre Code) ===== */
+        .btn {
+            padding: 0.6rem 1.5rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+            text-align: center;
+        }
+
+        .btn-secondary {
+            background: rgb(243, 240, 240);
+            color: var(--primary);
+            border: 1px solid #ccc;
+        }
+
+        .btn-secondary:hover {
+            background: #f0f0f0;
+        }
+        
+        /* Styles spécifiques à la page de cours (À ajouter à votre feuille de style) */
+        
+        .main-container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 2rem;
+        }
+
+        /* --- Barre de Contrôles (Cours, Recherche, Tri) --- */
+        .controls-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 0.5rem;
+        }
+
+        .search-area {
+            display: flex;
+            align-items: center;
+        }
+        
+        .search-area h2 {
+            font-size: 1.8rem;
+            color: var(--dark);
+            margin-right: 1.5rem;
+        }
+
+        .search-input {
+            padding: 0.7rem 1rem;
+            border: 1px solid var(--border-color);
+            border-radius: 5px;
+            width: 250px;
+            transition: border-color 0.3s;
+        }
+        
+        .search-input:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+
+        .sort-btn {
+            display: flex;
+            align-items: center;
+            margin-left: 10px;
+        }
+        
+        .sort-btn .fa-sort-alpha-down {
+            margin-right: 5px;
+            color: var(--text-color);
+        }
+
+
+        /* --- Section des Favoris/Titre --- */
+        .section-title {
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            color: var(--dark);
+        }
+
+        .section-title .fa-check {
+            color: var(--status-success);
+            margin-left: 5px;
+        }
+
+        /* --- Grille et Cartes de Cours --- */
+        .course-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .course-card {
+            background-color: white;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 1rem;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            min-height: 280px; /* Hauteur pour la démo */
+            transition: transform 0.2s;
+            cursor: pointer;
+        }
+        
+        .course-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.8rem;
+        }
+
+        .card-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        /* Icônes de coche */
+        .checkbox-done {
+            color: var(--status-success);
+        }
+
+        .checkbox-todo {
+            color: var(--border-color);
+        }
+
+        /* --- Composant de Progression --- */
+        .progress-container {
+            background-color: #e0e0e0;
+            border-radius: 4px;
+            margin-bottom: 1rem;
+            overflow: hidden;
+            height: 6px;
+        }
+
+        .progress-bar {
+            height: 100%;
+            transition: width 0.5s ease-in-out;
+            border-radius: 4px;
+        }
+
+        /* --- Contenu de la carte (lignes de texte simulées) --- */
+        .card-content {
+            flex-grow: 1;
+            margin-bottom: 1.5rem;
+        }
+
+        .card-content .line {
+            height: 8px;
+            background-color: #eee;
+            border-radius: 2px;
+            margin-bottom: 8px;
+        }
+
+        .card-content .line-short {
+            width: 70%;
+        }
+
+        /* --- Graphiques à Barres (Simulation) --- */
+        .chart-container {
+            display: flex;
+            justify-content: flex-start;
+            align-items: flex-end;
+            height: 40px;
+            padding-top: 5px;
+        }
+
+        .bar {
+            width: 15px;
+            background-color: #90a4ae;
+            margin-right: 4px;
+            border-radius: 2px 2px 0 0;
+        }
+
+        /* Couleurs et hauteurs des barres */
+        .bar:nth-child(1) { height: 15px; background-color: #546e7a; }
+        .bar:nth-child(2) { height: 30px; }
+        .bar:nth-child(3) { height: 40px; background-color: #546e7a; }
+        .bar:nth-child(4) { height: 25px; }
+        .bar:nth-child(5) { height: 10px; background-color: #546e7a; }
+        
+    </style>
 </head>
 <body>
 
-    <div class="header">
-        <div class="logo-section">
-            <div class="logo-icon">M</div>
-            <div class="mudel-logo">MUDEL</div>
-        </div>
-        <div class="user-section">
-            <div class="user-info">
-                <span style="font-size: 0.9em;">Nom Prénom</span>
+    <header>
+        <nav>
+            <div class="logo">
+                <img src="https://i.imgur.com/v8t7p6x.png" alt="Logo Mudel" style="height: 30px; width: auto;"> 
+                <span>MUDEL</span>
             </div>
-            <div class="user-buttons">
-                <button title="Notification"><i class="fas fa-bell"></i> Notification</button>
-                <button title="Messages"><i class="fas fa-envelope"></i> Messages</button>
+            
+            <ul class="nav-links">
+                <li><a href="#">Accueil</a></li>
+                <li><a href="#">Progression</a></li>
+                <li><a href="#" class="active">Cours</a></li> <li><a href="#">Cours +</a></li>
+                <li><a href="#">Boutique</a></li>
+            </ul>
+
+            <div class="user-menu">
+                <span style="font-size: 0.9rem;">Nom Prénom</span>
+                <button class="btn btn-secondary" title="Notification">
+                    <i class="fas fa-bell"></i>
+                </button>
+                <button class="btn btn-secondary" title="Messages">
+                    <i class="fas fa-envelope"></i>
+                </button>
+                <button class="btn btn-secondary" title="Profil">
+                    <i class="fas fa-user"></i>
+                </button>
             </div>
-        </div>
-    </div>
+        </nav>
+    </header>
     
-    <div class="nav-tabs">
-        <a href="#">Accueil</a>
-        <a href="#">Progression</a>
-        <a href="#" class="active">Cours</a>
-        <a href="#">Cours +</a>
-        <a href="#">Boutique</a>
-    </div>
+    <main class="main-container">
 
-    <div class="main-content">
-
-        <div class="controls">
-            <div style="display: flex; align-items: center;">
+        <div class="controls-bar">
+            <div class="search-area">
                 <h2>Cours</h2>
-                <input type="text" class="search-input" placeholder="search">
-                <i class="fas fa-sort-alpha-down" style="color: #666; margin-right: 5px;"></i>
-                <button class="sort-button">Trier</button>
+                <input type="text" class="search-input" placeholder="Rechercher un cours...">
+                
+                <div class="sort-btn">
+                    <i class="fas fa-sort-alpha-down"></i>
+                    <button class="btn btn-secondary" title="Trier">Trier</button>
+                </div>
             </div>
         </div>
         
-        <div class="courses-header">
+        <h3 class="section-title">
             Favoris <i class="fas fa-check"></i>
-        </div>
+        </h3>
 
         <div class="course-grid">
             
             <div class="course-card">
                 <div>
-                    <div class="card-title">
-                        Maths <i class="fas fa-check-square checkbox-done"></i>
+                    <div class="card-header">
+                        <span class="card-title">Maths</span>
+                        <i class="fas fa-check-square checkbox-done"></i>
                     </div>
-                    <div class="progress-bar-container">
-                        <div class="progress-bar" data-progress="100" data-color="#4CAF50"></div>
+                    <div class="progress-container">
+                        <div class="progress-bar" style="width: 100%; background-color: var(--status-success);"></div>
                     </div>
                     <div class="card-content">
                         <div class="line"></div>
@@ -66,21 +369,18 @@
                     </div>
                 </div>
                 <div class="chart-container">
-                    <div class="bar"></div>
-                    <div class="bar"></div>
-                    <div class="bar"></div>
-                    <div class="bar"></div>
-                    <div class="bar"></div>
+                    <div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div>
                 </div>
             </div>
 
             <div class="course-card">
                 <div>
-                    <div class="card-title">
-                        Physiques <i class="fas fa-check-square checkbox-done"></i>
+                    <div class="card-header">
+                        <span class="card-title">Physiques</span>
+                        <i class="fas fa-check-square checkbox-done"></i>
                     </div>
-                    <div class="progress-bar-container">
-                        <div class="progress-bar" data-progress="70" data-color="#ff9800"></div>
+                    <div class="progress-container">
+                        <div class="progress-bar" style="width: 70%; background-color: var(--status-warning);"></div>
                     </div>
                     <div class="card-content">
                         <div class="line"></div>
@@ -88,21 +388,18 @@
                     </div>
                 </div>
                 <div class="chart-container">
-                    <div class="bar"></div>
-                    <div class="bar"></div>
-                    <div class="bar"></div>
-                    <div class="bar"></div>
-                    <div class="bar"></div>
+                    <div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div>
                 </div>
             </div>
 
             <div class="course-card">
                 <div>
-                    <div class="card-title">
-                        Anglais <i class="fas fa-check-square checkbox-done"></i>
+                    <div class="card-header">
+                        <span class="card-title">Anglais</span>
+                        <i class="fas fa-check-square checkbox-done"></i>
                     </div>
-                    <div class="progress-bar-container">
-                        <div class="progress-bar" data-progress="40" data-color="#f44336"></div>
+                    <div class="progress-container">
+                        <div class="progress-bar" style="width: 40%; background-color: var(--status-danger);"></div>
                     </div>
                     <div class="card-content">
                         <div class="line"></div>
@@ -110,21 +407,18 @@
                     </div>
                 </div>
                 <div class="chart-container">
-                    <div class="bar"></div>
-                    <div class="bar"></div>
-                    <div class="bar"></div>
-                    <div class="bar"></div>
-                    <div class="bar"></div>
+                    <div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div>
                 </div>
             </div>
 
             <div class="course-card">
                 <div>
-                    <div class="card-title">
-                        Espagnol <i class="far fa-square checkbox-todo"></i>
+                    <div class="card-header">
+                        <span class="card-title">Espagnol</span>
+                        <i class="far fa-square checkbox-todo"></i>
                     </div>
-                    <div class="progress-bar-container">
-                        <div class="progress-bar" data-progress="0" data-color="#e0e0e0"></div>
+                    <div class="progress-container">
+                        <div class="progress-bar" style="width: 0%;"></div>
                     </div>
                     <div class="card-content">
                         <div class="line"></div>
@@ -132,21 +426,18 @@
                     </div>
                 </div>
                 <div class="chart-container">
-                    <div class="bar"></div>
-                    <div class="bar"></div>
-                    <div class="bar"></div>
-                    <div class="bar"></div>
-                    <div class="bar"></div>
+                    <div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div>
                 </div>
             </div>
 
             <div class="course-card">
                 <div>
-                    <div class="card-title">
-                        Electronique <i class="far fa-square checkbox-todo"></i>
+                    <div class="card-header">
+                        <span class="card-title">Electronique</span>
+                        <i class="far fa-square checkbox-todo"></i>
                     </div>
-                    <div class="progress-bar-container">
-                        <div class="progress-bar" data-progress="0" data-color="#e0e0e0"></div>
+                    <div class="progress-container">
+                        <div class="progress-bar" style="width: 0%;"></div>
                     </div>
                     <div class="card-content">
                         <div class="line"></div>
@@ -154,28 +445,11 @@
                     </div>
                 </div>
                 <div class="chart-container">
-                    <div class="bar"></div>
-                    <div class="bar"></div>
-                    <div class="bar"></div>
-                    <div class="bar"></div>
-                    <div class="bar"></div>
+                    <div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div>
                 </div>
             </div>
 
         </div>
-        </div>
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            document.querySelectorAll('.progress-bar').forEach(bar => {
-                const progress = bar.getAttribute('data-progress');
-                const color = bar.getAttribute('data-color');
-                bar.style.width = progress + '%';
-                if (progress > 0) {
-                    bar.style.backgroundColor = color;
-                }
-            });
-        });
-    </script>
-
-</body>
+    </main>
+    </body>
 </html>

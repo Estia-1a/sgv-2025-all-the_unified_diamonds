@@ -102,3 +102,185 @@ nav {
     font-size: 1.1rem;
     padding: 1rem 2rem;
 }
+
+/* ======================================================= */
+/* Styles Spécifiques à la Liste des Cours (Mudel)         */
+/* À AJOUTER à la fin de votre fichier CSS existant         */
+/* ======================================================= */
+
+/* Variables spécifiques aux statuts si elles ne sont pas dans votre :root */
+:root {
+    --status-success: #4CAF50; /* Vert */
+    --status-warning: #ff9800; /* Orange */
+    --status-danger: #f44336; /* Rouge */
+    --text-color: #333;
+    --border-color: #ddd;
+}
+
+.main-container {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 2rem;
+}
+
+/* --- Barre de Contrôles (Cours, Recherche, Tri) --- */
+.controls-bar {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.5rem;
+}
+
+.search-area {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.search-area h2 {
+    font-size: 1.8rem;
+    color: var(--dark);
+    margin-right: 1.5rem;
+}
+
+.search-input {
+    padding: 0.7rem 1rem;
+    border: 1px solid var(--border-color, #ccc);
+    border-radius: 5px;
+    width: 250px;
+    transition: border-color 0.3s;
+}
+
+.search-input:focus {
+    outline: none;
+    border-color: var(--primary);
+}
+
+.sort-btn {
+    display: flex;
+    align-items: center;
+    margin-left: 10px;
+}
+
+.sort-btn .fa-sort-alpha-down {
+    margin-right: 5px;
+    color: var(--text-color, #333);
+}
+
+
+/* --- Section des Favoris/Titre --- */
+.section-title {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+    color: var(--dark);
+}
+
+.section-title .fa-check {
+    color: var(--status-success);
+    margin-left: 5px;
+}
+
+/* --- Grille et Cartes de Cours --- */
+.course-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.course-card {
+    background-color: white;
+    border: 1px solid var(--border-color, #ddd);
+    border-radius: 8px;
+    padding: 1rem;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 280px;
+    transition: transform 0.2s, box-shadow 0.2s;
+    cursor: pointer;
+}
+
+.course-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.8rem;
+}
+
+.card-title {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: var(--primary);
+}
+
+/* Icônes de coche */
+.checkbox-done {
+    color: var(--status-success);
+}
+
+.checkbox-todo {
+    color: var(--border-color, #ccc);
+}
+
+/* --- Composant de Progression --- */
+.progress-container {
+    background-color: #e0e0e0;
+    border-radius: 4px;
+    margin-bottom: 1rem;
+    overflow: hidden;
+    height: 6px;
+}
+
+.progress-bar {
+    height: 100%;
+    transition: width 0.5s ease-in-out;
+    border-radius: 4px;
+}
+
+/* --- Contenu de la carte (lignes de texte simulées) --- */
+.card-content {
+    flex-grow: 1;
+    margin-bottom: 1.5rem;
+}
+
+.card-content .line {
+    height: 8px;
+    background-color: #eee;
+    border-radius: 2px;
+    margin-bottom: 8px;
+}
+
+.card-content .line-short {
+    width: 70%;
+}
+
+/* --- Graphiques à Barres (Simulation) --- */
+.chart-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-end;
+    height: 40px;
+    padding-top: 5px;
+}
+
+.bar {
+    width: 15px;
+    background-color: #90a4ae;
+    margin-right: 4px;
+    border-radius: 2px 2px 0 0;
+}
+
+/* Couleurs et hauteurs des barres */
+.bar:nth-child(1) { height: 15px; background-color: #546e7a; }
+.bar:nth-child(2) { height: 30px; }
+.bar:nth-child(3) { height: 40px; background-color: #546e7a; }
+.bar:nth-child(4) { height: 25px; }
+.bar:nth-child(5) { height: 10px; background-color: #546e7a; }
