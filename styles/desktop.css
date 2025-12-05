@@ -221,4 +221,22 @@ nav {
     background: #fce4ec;
     color: #c2185b;
 }
+
+/* ===== SECTION COURS ===== */
  
+/* Grille des cours */
+.course-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 25px;
+    justify-content: center;
+}
+ 
+/* Carte individuelle de cours */
+.course-card {
+    background: white;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    width: 320px;
+    overflow: hidden;
+}
