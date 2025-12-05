@@ -48,7 +48,7 @@ nav {
 }
 
 .logo img {
-    height: 60px; /* taille du logo */
+    height: 80px; /* taille du logo */
     width: auto;
 }
 
@@ -156,4 +156,43 @@ nav {
     color: var(--dark);
     margin-bottom: 2rem;
     text-align: center;
+}
+
+/* ===== DASHBOARD ===== */
+.dashboard {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.card {
+    background: white;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    width: 250px;
+    text-align: center;
+}
+
+.card:hover {
+    border-color: var(--primary);
+}
+
+.card h3 {
+    color: var(--dark);
+    margin-bottom: 15px;
+    font-size: 1.1rem;
+}
+
+.big-number {
+    font-size: 3rem;
+    color: var(--primary);
+    font-weight: bold;
+    margin: 10px 0;
+}
+
+.card p {
+    color: #666;
+    margin: 5px 0;
 }
