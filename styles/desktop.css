@@ -240,3 +240,64 @@ nav {
     width: 320px;
     overflow: hidden;
 }
+ 
+/* Effet au survol */
+.course-card:hover {
+    border-color: var(--primary);
+}
+ 
+/* Image/bannière du cours */
+.course-image {
+    width: 100%;
+    height: 180px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3rem;
+    color: white;
+}
+ 
+/* Couleurs de fond pour chaque cours */
+.math-bg {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+}
+ 
+.spanish-bg {
+    background: linear-gradient(135deg, #f093fb, #f5576c);
+}
+ 
+.english-bg {
+    background: linear-gradient(135deg, #4facfe, #00f2fe);
+}
+ 
+.lifecycle-bg {
+    background: linear-gradient(135deg, #43e97b, #38f9d7);
+}
+ 
+.webdev-bg {
+    background: linear-gradient(135deg, #fa709a, #fee140);
+}
+ 
+/* Contenu de la carte */
+.course-content {
+    padding: 20px;
+}
+ 
+.course-content h3 {
+    color: var(--dark);
+    margin-bottom: 10px;
+    font-size: 1.3rem;
+}
+ 
+.course-content p {
+    color: #666;
+    margin-bottom: 10px;
+    font-size: 0.95rem;
+}
+ 
+/* Informations du cours (durée et niveau) */
+.course-info {
+    font-size: 0.85rem;
+    color: #999;
+    margin-top: 15px;
+}
