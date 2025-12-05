@@ -3,179 +3,97 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mudel - Liste des Cours</title>
-    
-    <link rel="stylesheet" href="style.css">
-    
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-</head>
+    <title>Mes Cours - Mudel</title>
+    <link rel="stylesheet" href="styles/Page_Cours.css">
+    </head>
 <body>
-
-    <div class="header">
-        <div class="logo-section">
-            <div class="logo-icon">M</div>
-            <div class="mudel-logo">MUDEL</div>
-        </div>
-        <div class="user-section">
-            <div class="user-info">
-                <span style="font-size: 0.9em;">Nom Prénom</span>
+    <header>
+        <nav>
+            <div class="logo">
+                <img src="media/pictures/logo.svg" alt="Logo Mudel">
+                <span>Mudel</span>
             </div>
-            <div class="user-buttons">
-                <button title="Notification"><i class="fas fa-bell"></i> Notification</button>
-                <button title="Messages"><i class="fas fa-envelope"></i> Messages</button>
-            </div>
-        </div>
-    </div>
-    
-    <div class="nav-tabs">
-        <a href="#">Accueil</a>
-        <a href="#">Progression</a>
-        <a href="#" class="active">Cours</a>
-        <a href="#">Cours +</a>
-        <a href="#">Boutique</a>
-    </div>
 
-    <div class="main-content">
-
-        <div class="controls">
-            <div style="display: flex; align-items: center;">
-                <h2>Cours</h2>
-                <input type="text" class="search-input" placeholder="search">
-                <i class="fas fa-sort-alpha-down" style="color: #666; margin-right: 5px;"></i>
-                <button class="sort-button">Trier</button>
-            </div>
-        </div>
-        
-        <div class="courses-header">
-            Favoris <i class="fas fa-check"></i>
-        </div>
-
-        <div class="course-grid">
+            <ul class="nav-links">
+                <li><a href="index.html">Accueil</a></li>
+                <li><a href="progression.html">Progression</a></li>
+                <li><a href="cours.html" class="active-link">Cours</a></li>
+                <li><a href="cours_plus.html">Cours +</a></li>
+                <li><a href="boutique.html">Boutique</a></li>
+            </ul>
             
-            <div class="course-card">
-                <div>
-                    <div class="card-title">
-                        Maths <i class="fas fa-check-square checkbox-done"></i>
-                    </div>
-                    <div class="progress-bar-container">
-                        <div class="progress-bar" data-progress="100" data-color="#4CAF50"></div>
-                    </div>
-                    <div class="card-content">
-                        <div class="line"></div>
-                        <div class="line line-short"></div>
-                    </div>
+            <div class="user-profile">
+                <div class="user-info">
+                    <button class="profile-avatar">👤</button>
+                    <span>Nom Prénom</span>
                 </div>
-                <div class="chart-container">
-                    <div class="bar"></div>
-                    <div class="bar"></div>
-                    <div class="bar"></div>
-                    <div class="bar"></div>
-                    <div class="bar"></div>
-                </div>
+                <button class="icon-btn">🔔 Notification</button>
+                <button class="icon-btn">💬 Messages</button>
+            </div>
+        </nav>
+    </header>
+
+    <div class="sub-nav-container">
+        <nav class="sub-nav">
+            <a href="index.html">Accueil</a>
+            <span class="separator">|</span>
+            <a href="cours.html" class="active">Cours</a>
+        </nav>
+    </div>
+
+<main class="container">
+
+    <section class="cours-header">
+        <h2>Cours</h2>
+        <div class="controls-bar">
+            <div class="search-box">
+                <input type="text" placeholder="search" class="search-input">
+                <span class="search-icon">🔍</span>
             </div>
 
-            <div class="course-card">
-                <div>
-                    <div class="card-title">
-                        Physiques <i class="fas fa-check-square checkbox-done"></i>
-                    </div>
-                    <div class="progress-bar-container">
-                        <div class="progress-bar" data-progress="70" data-color="#ff9800"></div>
-                    </div>
-                    <div class="card-content">
-                        <div class="line"></div>
-                        <div class="line line-short"></div>
-                    </div>
-                </div>
-                <div class="chart-container">
-                    <div class="bar"></div>
-                    <div class="bar"></div>
-                    <div class="bar"></div>
-                    <div class="bar"></div>
-                    <div class="bar"></div>
-                </div>
-            </div>
-
-            <div class="course-card">
-                <div>
-                    <div class="card-title">
-                        Anglais <i class="fas fa-check-square checkbox-done"></i>
-                    </div>
-                    <div class="progress-bar-container">
-                        <div class="progress-bar" data-progress="40" data-color="#f44336"></div>
-                    </div>
-                    <div class="card-content">
-                        <div class="line"></div>
-                        <div class="line line-short"></div>
-                    </div>
-                </div>
-                <div class="chart-container">
-                    <div class="bar"></div>
-                    <div class="bar"></div>
-                    <div class="bar"></div>
-                    <div class="bar"></div>
-                    <div class="bar"></div>
-                </div>
-            </div>
-
-            <div class="course-card">
-                <div>
-                    <div class="card-title">
-                        Espagnol <i class="far fa-square checkbox-todo"></i>
-                    </div>
-                    <div class="progress-bar-container">
-                        <div class="progress-bar" data-progress="0" data-color="#e0e0e0"></div>
-                    </div>
-                    <div class="card-content">
-                        <div class="line"></div>
-                        <div class="line line-short"></div>
-                    </div>
-                </div>
-                <div class="chart-container">
-                    <div class="bar"></div>
-                    <div class="bar"></div>
-                    <div class="bar"></div>
-                    <div class="bar"></div>
-                    <div class="bar"></div>
-                </div>
-            </div>
-
-            <div class="course-card">
-                <div>
-                    <div class="card-title">
-                        Electronique <i class="far fa-square checkbox-todo"></i>
-                    </div>
-                    <div class="progress-bar-container">
-                        <div class="progress-bar" data-progress="0" data-color="#e0e0e0"></div>
-                    </div>
-                    <div class="card-content">
-                        <div class="line"></div>
-                        <div class="line line-short"></div>
-                    </div>
-                </div>
-                <div class="chart-container">
-                    <div class="bar"></div>
-                    <div class="bar"></div>
-                    <div class="bar"></div>
-                    <div class="bar"></div>
-                    <div class="bar"></div>
-                </div>
-            </div>
-
+            <button class="sort-btn">
+                <span class="sort-icon">⇅</span>
+                Trier
+            </button>
         </div>
-        </div>
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            document.querySelectorAll('.progress-bar').forEach(bar => {
-                const progress = bar.getAttribute('data-progress');
-                const color = bar.getAttribute('data-color');
-                bar.style.width = progress + '%';
-                if (progress > 0) {
-                    bar.style.backgroundColor = color;
-                }
-            });
-        });
-    </script>
+    </section>
 
+    <section class="favorite-courses">
+        <h3>
+            Favoris <span class="check-icon">✔</span>
+        </h3>
+        
+        <div class="courses-grid">
+            
+            <a href="cours/maths.html" class="course-card favorite">
+                <h4>Maths</h4>
+                <span class="favorite-checkbox checked">✔</span>
+            </a>
+
+            <a href="cours/physiques.html" class="course-card favorite">
+                <h4>Physiques</h4>
+                <span class="favorite-checkbox checked">✔</span>
+            </a>
+
+            <a href="cours/anglais.html" class="course-card favorite">
+                <h4>Anglais</h4>
+                <span class="favorite-checkbox checked">✔</span>
+            </a>
+            
+            <a href="cours/espagnol.html" class="course-card">
+                <h4>Espagnol</h4>
+                <span class="favorite-checkbox unchecked">☐</span>
+            </a>
+
+            <a href="cours/electronique.html" class="course-card">
+                <h4>Électronique</h4>
+                <span class="favorite-checkbox unchecked">☐</span>
+            </a>
+            
+            </div>
+    </section>
+
+</main>
+    
 </body>
 </html>

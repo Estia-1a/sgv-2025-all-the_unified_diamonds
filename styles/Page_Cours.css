@@ -1,0 +1,340 @@
+/* ===== RESET & VARIABLES ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary: #0066cc;
+    --secondary: #ff6b35;
+    --dark: #1a1a2e;
+    --light: #f5f5f5;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background: var(--light);
+}
+
+/* ===== HEADER & NAVIGATION ===== */
+header {
+    background: linear-gradient(135deg, var(--primary), #0052a3);
+    color: white;
+    padding: 1rem 0;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+nav {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 2rem;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 8px; /* espace entre image et texte */
+    font-size: 1.4rem;
+    font-weight: bold;
+}
+
+.logo img {
+    height: 60px; /* taille du logo */
+    width: auto;
+}
+
+.nav-links {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    transition: opacity 0.3s;
+}
+
+
+.user-menu {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+/* ===== BUTTONS ===== */
+.btn {
+    padding: 0.6rem 1.5rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: all 0.3s;
+    text-decoration: none;
+    display: inline-block;
+    text-align: center;
+}
+
+.btn-secondary {
+    background: rgb(243, 240, 240);
+    color: var(--primary);
+}
+
+.btn-secondary:hover {
+    background: #f0f0f0;
+}
+
+.btn-full {
+    width: 100%;
+    margin-top: 1rem;
+}
+
+.btn-large {
+    font-size: 1.1rem;
+    padding: 1rem 2rem;
+}
+
+/* ajout CSS pour page Cours */
+
+/* Modification de la NAV pour supporter les nouveaux éléments (Profil, Notif, Messages) */
+nav {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 2rem;
+    /* Pour aligner les éléments de navigation au centre (Logo, Liens, Profil) */
+    height: 80px; /* Ajout d'une hauteur pour centrer l'ensemble */
+}
+
+/* ... Vos styles pour .logo et .nav-links ... */
+
+/* Style pour l'élément actif dans la navigation principale */
+.nav-links a.active-link {
+    font-weight: bold;
+    color: var(--light); /* ou une autre couleur qui attire l'attention */
+    border-bottom: 2px solid var(--secondary);
+    padding-bottom: 5px;
+}
+
+/* Nouveau : Conteneur du profil et des actions */
+.user-profile {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem; /* Espace entre l'info utilisateur, Notif, Messages */
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 600;
+}
+
+.profile-avatar {
+    background: white;
+    color: var(--primary);
+    border: none;
+    border-radius: 50%;
+    width: 35px;
+    height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    cursor: pointer;
+}
+
+.icon-btn {
+    background: none;
+    color: white;
+    border: 1px solid white;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: background 0.3s;
+}
+
+.icon-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+/* ===== SOUS-NAVIGATION (ACCUEIL | COURS) ===== */
+.sub-nav-container {
+    background-color: white;
+    border-bottom: 1px solid #ddd;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.sub-nav {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0.8rem 2rem;
+}
+
+.sub-nav a {
+    color: #555;
+    text-decoration: none;
+    padding: 0 5px;
+}
+
+.sub-nav .separator {
+    color: #ccc;
+    margin: 0 5px;
+}
+
+.sub-nav a.active {
+    color: var(--primary);
+    font-weight: bold;
+    border-bottom: 2px solid var(--primary);
+    padding-bottom: 5px;
+}
+
+/* Ajout d'un conteneur principal centré pour le contenu */
+.container {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 0 2rem;
+}
+/* ===== PAGE COURS : CONTRÔLES (RECHERCHE/TRI) ===== */
+
+.cours-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+}
+
+.cours-header h2 {
+    font-size: 1.8rem;
+    color: var(--dark);
+}
+
+.controls-bar {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+/* Champ de recherche */
+.search-box {
+    display: flex;
+    align-items: center;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 5px 10px;
+    background-color: white;
+}
+
+.search-input {
+    border: none;
+    padding: 5px 0;
+    font-size: 1rem;
+    outline: none; /* Supprime le contour au focus */
+    width: 200px;
+}
+
+.search-icon {
+    color: #888;
+    margin-right: 5px;
+}
+
+/* Bouton de Tri */
+.sort-btn {
+    background: white;
+    color: var(--primary);
+    border: 1px solid var(--primary);
+    padding: 8px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    transition: background 0.2s;
+}
+
+.sort-btn:hover {
+    background: var(--light);
+}
+
+/* ===== PAGE COURS : CARTES (CARDS) ===== */
+
+.favorite-courses h3 {
+    font-size: 1.5rem;
+    color: var(--dark);
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+}
+
+.favorite-courses .check-icon {
+    color: #4CAF50; /* Vert pour le checkmark */
+    font-size: 1.2rem;
+    margin-left: 8px;
+    font-weight: bold;
+}
+
+.courses-grid {
+    display: grid;
+    /* Crée 3 colonnes de taille égale */
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 20px;
+    padding-bottom: 50px;
+}
+
+.course-card {
+    /* Style de base de la carte */
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    height: 200px; /* Taille fixe pour l'exemple */
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    text-decoration: none; /* Pour enlever le soulignement du lien */
+    color: #333;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.course-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+}
+
+.course-card h4 {
+    font-size: 1.4rem;
+    font-weight: 600;
+}
+
+/* Style de l'indicateur Favori */
+.favorite-checkbox {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #888; /* Couleur par défaut */
+}
+
+/* Style spécifique pour la case cochée */
+.favorite-checkbox.checked {
+    color: var(--primary); /* Utilisez votre couleur primaire pour le checked */
+}
+
+/* Style pour la case non-cochée (facultatif si vous voulez plus de contraste) */
+.favorite-checkbox.unchecked {
+    color: #ccc;
+}
