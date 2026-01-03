@@ -3,97 +3,94 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mes Cours - Mudel</title>
-    <link rel="stylesheet" href="styles/Page_Cours.css">
-    </head>
+    <title>Mathématiques - Mudel</title>
+    <link rel="stylesheet" href="styles/desktop.css">
+    <link rel="stylesheet" href="styles/cours-detail.css">
+</head>
 <body>
+
     <header>
         <nav>
             <div class="logo">
-                <img src="media/pictures/logo.svg" alt="Logo Mudel">
-                <span>Mudel</span>
+                <img src="media/pictures/logoMudel.png" alt="LogoMudel">
             </div>
-
             <ul class="nav-links">
                 <li><a href="index.html">Accueil</a></li>
-                <li><a href="progression.html">Progression</a></li>
-                <li><a href="cours.html" class="active-link">Cours</a></li>
-                <li><a href="cours_plus.html">Cours +</a></li>
-                <li><a href="boutique.html">Boutique</a></li>
+                <li><a href="index.html#cours">Cours</a></li>
+                <li><a href="#progression">Ma Progression</a></li>
+                <li><a href="#premium">Premium</a></li>
             </ul>
-            
-            <div class="user-profile">
-                <div class="user-info">
-                    <button class="profile-avatar">👤</button>
-                    <span>Nom Prénom</span>
-                </div>
-                <button class="icon-btn">🔔 Notification</button>
-                <button class="icon-btn">💬 Messages</button>
+            <div class="user-menu">
+                <button id="loginBtn" class="btn btn-secondary">👤 Profil</button>
             </div>
         </nav>
     </header>
 
-    <div class="sub-nav-container">
-        <nav class="sub-nav">
-            <a href="index.html">Accueil</a>
-            <span class="separator">|</span>
-            <a href="cours.html" class="active">Cours</a>
-        </nav>
-    </div>
-
-<main class="container">
-
-    <section class="cours-header">
-        <h2>Cours</h2>
-        <div class="controls-bar">
-            <div class="search-box">
-                <input type="text" placeholder="search" class="search-input">
-                <span class="search-icon">🔍</span>
+    <section class="course-hero">
+        <div class="container">
+            <div class="hero-content">
+                <span class="badge">Sciences</span>
+                <h1>📐 Mathématiques</h1>
+                <p>Analyse, algèbre linéaire et calcul différentiel</p>
             </div>
-
-            <button class="sort-btn">
-                <span class="sort-icon">⇅</span>
-                Trier
-            </button>
         </div>
     </section>
 
-    <section class="favorite-courses">
-        <h3>
-            Favoris <span class="check-icon">✔</span>
-        </h3>
-        
-        <div class="courses-grid">
-            
-            <a href="cours/maths.html" class="course-card favorite">
-                <h4>Maths</h4>
-                <span class="favorite-checkbox checked">✔</span>
-            </a>
+    <div class="container">
+        <nav class="breadcrumb">
+            <a href="index.html">Accueil</a> <span>&gt;</span> 
+            <a href="index.html#cours">Cours</a> <span>&gt;</span> 
+            <strong>Mathématiques</strong>
+        </nav>
 
-            <a href="cours/physiques.html" class="course-card favorite">
-                <h4>Physiques</h4>
-                <span class="favorite-checkbox checked">✔</span>
-            </a>
-
-            <a href="cours/anglais.html" class="course-card favorite">
-                <h4>Anglais</h4>
-                <span class="favorite-checkbox checked">✔</span>
-            </a>
+        <section class="modules-section">
+            <h2 class="section-title">📚 Modules d'apprentissage</h2>
             
-            <a href="cours/espagnol.html" class="course-card">
-                <h4>Espagnol</h4>
-                <span class="favorite-checkbox unchecked">☐</span>
-            </a>
+            <div class="modules-list">
+                <article class="module-card">
+                    <div class="module-info">
+                        <span class="module-number">01</span>
+                        <div>
+                            <h3>Algèbre Linéaire</h3>
+                            <p>Matrices, déterminants et systèmes d'équations complexes.</p>
+                        </div>
+                    </div>
+                    <div class="module-actions">
+                        <span class="duration">⏱ 12h</span>
+                        <a href="#" class="btn btn-primary">Démarrer</a>
+                    </div>
+                </article>
 
-            <a href="cours/electronique.html" class="course-card">
-                <h4>Électronique</h4>
-                <span class="favorite-checkbox unchecked">☐</span>
-            </a>
-            
+                <article class="module-card">
+                    <div class="module-info">
+                        <span class="module-number">02</span>
+                        <div>
+                            <h3>Analyse Réelle</h3>
+                            <p>Étude des suites numériques et fonctions d'une variable.</p>
+                        </div>
+                    </div>
+                    <div class="module-actions">
+                        <span class="duration">⏱ 15h</span>
+                        <a href="#" class="btn btn-primary">Démarrer</a>
+                    </div>
+                </article>
+
+                <article class="module-card">
+                    <div class="module-info">
+                        <span class="module-number">03</span>
+                        <div>
+                            <h3>Probabilités</h3>
+                            <p>Variables aléatoires, lois de probabilités et statistiques.</p>
+                        </div>
+                    </div>
+                    <div class="module-actions">
+                        <span class="duration">⏱ 13h</span>
+                        <a href="#" class="btn btn-primary">Démarrer</a>
+                    </div>
+                </article>
             </div>
-    </section>
+        </section>
+    </div>
 
-</main>
-    
 </body>
 </html>
