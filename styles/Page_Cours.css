@@ -1,100 +1,136 @@
-/* ===== STYLE SPÉCIFIQUE : DÉTAIL DU COURS ===== */
-
-/* Bannière du cours */
-.course-hero {
-    background: linear-gradient(135deg, #0066cc, #004080);
-    color: white;
-    padding: 60px 0;
-    margin-bottom: 20px;
+/* ===== LAYOUT GÉNÉRAL ===== */
+.page-layout {
+    display: grid;
+    grid-template-columns: 200px 1fr 250px; /* Gauche, Centre, Droite */
+    gap: 20px;
+    max-width: 1400px;
+    margin: 20px auto;
+    padding: 0 20px;
 }
 
-.course-hero h1 {
-    font-size: 2.5rem;
-    margin: 10px 0;
+/* ===== SIDEBAR GAUCHE ===== */
+.sidebar-left {
+    background: #f9f9f9;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
 }
 
-.badge {
-    background: rgba(255, 255, 255, 0.2);
-    padding: 5px 12px;
-    border-radius: 20px;
-    font-size: 0.8rem;
-    text-transform: uppercase;
+.mini-card {
+    background: white;
+    border: 1px solid #ccc;
+    padding: 20px 10px;
+    margin-bottom: 10px;
+    text-align: center;
+    border-radius: 4px;
 }
 
-/* Fil d'ariane */
-.breadcrumb {
-    margin-bottom: 30px;
-    font-size: 0.9rem;
-    color: #666;
+.mini-card.active {
+    border: 2px solid #000;
+    font-weight: bold;
 }
 
-.breadcrumb a {
-    color: var(--primary);
-    text-decoration: none;
+/* ===== ZONE CENTRALE ===== */
+.course-content-area {
+    background: white;
+    padding: 20px;
+    border: 1px solid #000;
 }
 
-.breadcrumb span {
-    margin: 0 10px;
+.title-separator {
+    margin: 10px 0 25px 0;
+    border: 0.5px solid #333;
 }
 
-/* Liste des modules */
-.modules-list {
+.content-block {
+    border: 1.5px solid #333;
+    padding: 15px;
+    margin-bottom: 25px;
+}
+
+.content-block h4 {
+    border-bottom: 1.5px solid #333;
+    padding-bottom: 5px;
+    margin-bottom: 15px;
+}
+
+.file-item {
+    margin-bottom: 15px;
+    padding-left: 20px;
+}
+
+.file-item a {
+    color: #0066cc;
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+.file-item p {
+    font-size: 0.85rem;
+    color: #444;
+}
+
+/* Lecteur Audio Factice */
+.audio-player {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 5px;
+}
+
+.audio-bar {
+    height: 2px;
+    background: #000;
+    flex-grow: 1;
+    position: relative;
+}
+
+.audio-bar::after {
+    content: '';
+    position: absolute;
+    right: 50%;
+    top: -4px;
+    width: 10px;
+    height: 10px;
+    background: #000;
+    border-radius: 50%;
+}
+
+/* ===== SIDEBAR DROITE ===== */
+.sidebar-right {
     display: flex;
     flex-direction: column;
     gap: 15px;
 }
 
-.module-card {
-    background: white;
-    border-radius: 12px;
-    padding: 20px;
+.widget {
+    background: #eee;
+    border: 1px solid #aaa;
+    padding: 10px;
+}
+
+.date-picker {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-    border: 1px solid #eee;
-    transition: transform 0.2s;
 }
 
-.module-card:hover {
-    transform: scale(1.01);
-    border-color: var(--primary);
+.calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    text-align: center;
+    font-size: 0.8rem;
+    margin-top: 10px;
 }
 
-.module-info {
-    display: flex;
-    align-items: center;
-    gap: 20px;
+.today {
+    background: #cce5ff;
+    border-radius: 50%;
 }
 
-.module-number {
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: #ddd;
-}
-
-.module-actions {
-    display: flex;
-    align-items: center;
-    gap: 20px;
-}
-
-.duration {
-    font-size: 0.9rem;
-    color: #888;
-    white-space: nowrap;
-}
-
-/* Adaptation mobile */
-@media (max-width: 768px) {
-    .module-card {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 15px;
-    }
-    
-    .module-actions {
-        width: 100%;
-        justify-content: space-between;
+/* Adaptation Mobile */
+@media (max-width: 1000px) {
+    .page-layout {
+        grid-template-columns: 1fr;
     }
 }

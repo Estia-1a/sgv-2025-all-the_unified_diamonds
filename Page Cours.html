@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mathématiques - Mudel</title>
+    <title>Maths - Mudel</title>
     <link rel="stylesheet" href="styles/desktop.css">
-    <link rel="stylesheet" href="styles/cours-detail.css">
+    <link rel="stylesheet" href="styles/Page_Cours.css">
 </head>
 <body>
 
@@ -26,70 +26,85 @@
         </nav>
     </header>
 
-    <section class="course-hero">
-        <div class="container">
-            <div class="hero-content">
-                <span class="badge">Sciences</span>
-                <h1>📐 Mathématiques</h1>
-                <p>Analyse, algèbre linéaire et calcul différentiel</p>
+    <div class="page-layout">
+        
+        <aside class="sidebar-left">
+            <h3>Liste des cours</h3>
+            <div class="mini-course-list">
+                <div class="mini-card active">Maths</div>
+                <div class="mini-card">Electronique</div>
+                <div class="mini-card">Physiques</div>
+                <div class="mini-card">Espagnol</div>
             </div>
-        </div>
-    </section>
+        </aside>
 
-    <div class="container">
-        <nav class="breadcrumb">
-            <a href="index.html">Accueil</a> <span>&gt;</span> 
-            <a href="index.html#cours">Cours</a> <span>&gt;</span> 
-            <strong>Mathématiques</strong>
-        </nav>
+        <main class="course-content-area">
+            <h1>Maths</h1>
+            <hr class="title-separator">
 
-        <section class="modules-section">
-            <h2 class="section-title">📚 Modules d'apprentissage</h2>
-            
-            <div class="modules-list">
-                <article class="module-card">
-                    <div class="module-info">
-                        <span class="module-number">01</span>
-                        <div>
-                            <h3>Algèbre Linéaire</h3>
-                            <p>Matrices, déterminants et systèmes d'équations complexes.</p>
+            <section class="content-block">
+                <h4>TD 1 : <span>Introduction aux vecteurs et matrices</span></h4>
+                <div class="file-list">
+                    <div class="file-item">
+                        <a href="#">- Fichier 1</a>
+                        <p>Énoncé des exercices de base sur les espaces vectoriels.</p>
+                    </div>
+                    <div class="file-item">
+                        <a href="#">- Fichier 2</a>
+                        <p>Corrigé type de la première séance de TD.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="content-block">
+                <h4>TD 2 : <span>Calcul intégral et fonctions</span></h4>
+                <div class="file-list">
+                    <div class="file-item">
+                        <a href="#">- Fichier 1</a>
+                        <p>Cours magistral complet sur l'intégration par parties.</p>
+                    </div>
+                    <div class="file-item">
+                        <span class="audio-label">- Audio 1</span>
+                        <div class="audio-player">
+                            <span class="play-icon">🔊</span>
+                            <div class="audio-bar"></div>
                         </div>
                     </div>
-                    <div class="module-actions">
-                        <span class="duration">⏱ 12h</span>
-                        <a href="#" class="btn btn-primary">Démarrer</a>
+                    <div class="file-item">
+                        <a href="#">- Fichier 2</a>
+                        <p>Notes complémentaires sur les fonctions usuelles.</p>
                     </div>
-                </article>
+                </div>
+            </section>
+        </main>
 
-                <article class="module-card">
-                    <div class="module-info">
-                        <span class="module-number">02</span>
-                        <div>
-                            <h3>Analyse Réelle</h3>
-                            <p>Étude des suites numériques et fonctions d'une variable.</p>
-                        </div>
-                    </div>
-                    <div class="module-actions">
-                        <span class="duration">⏱ 15h</span>
-                        <a href="#" class="btn btn-primary">Démarrer</a>
-                    </div>
-                </article>
-
-                <article class="module-card">
-                    <div class="module-info">
-                        <span class="module-number">03</span>
-                        <div>
-                            <h3>Probabilités</h3>
-                            <p>Variables aléatoires, lois de probabilités et statistiques.</p>
-                        </div>
-                    </div>
-                    <div class="module-actions">
-                        <span class="duration">⏱ 13h</span>
-                        <a href="#" class="btn btn-primary">Démarrer</a>
-                    </div>
-                </article>
+        <aside class="sidebar-right">
+            <div class="widget events">
+                <h4>Évènement à venir :</h4>
+                <ul>
+                    <li>Examen de mi-parcours</li>
+                    <li>Rendu TP Matrice</li>
+                    <li>Séance de tutorat</li>
+                </ul>
             </div>
-        </section>
+
+            <div class="widget date-picker">
+                <div class="date-display">/ /</div>
+                <button class="calendar-btn">📅</button>
+            </div>
+
+            <div class="widget calendar">
+                <div class="calendar-header">
+                    <span>◀</span> JANUARY 2026 <span>▶</span>
+                </div>
+                <div class="calendar-grid">
+                    <span>S</span><span>M</span><span>T</span><span>W</span><span>T</span><span>F</span><span>S</span>
+                    <span class="empty"></span><span class="empty"></span><span class="empty"></span><span class="empty"></span><span>1</span><span>2</span><span class="today">3</span>
+                    <span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span>
+                </div>
+            </div>
+        </aside>
+
     </div>
 
 </body>
